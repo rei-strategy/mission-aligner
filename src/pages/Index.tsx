@@ -4,6 +4,7 @@ import { AppSidebar } from "@/components/AppSidebar";
 import MissionBuilder from '@/components/MissionBuilder';
 import ValuesChecklist from '@/components/ValuesChecklist';
 import AlignmentPlanner from '@/components/AlignmentPlanner';
+import { Separator } from "@/components/ui/separator";
 
 const Index = () => {
   return (
@@ -17,10 +18,22 @@ const Index = () => {
               <p className="text-gray-400">Your step-by-step guide to establishing and managing a successful sober living business</p>
             </header>
             
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              <MissionBuilder />
-              <ValuesChecklist />
-              <AlignmentPlanner />
+            <div className="bg-black-700 p-6 rounded-lg">
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <MissionBuilder />
+                <ValuesChecklist />
+                <AlignmentPlanner />
+              </div>
+            </div>
+
+            <Separator className="my-8" />
+            
+            <div className="bg-black-800 p-6 rounded-lg">
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <MissionBuilder />
+                <ValuesChecklist />
+                <AlignmentPlanner />
+              </div>
             </div>
           </div>
         </main>
