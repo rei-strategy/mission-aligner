@@ -5,6 +5,7 @@ import MissionBuilder from '@/components/MissionBuilder';
 import ValuesChecklist from '@/components/ValuesChecklist';
 import AlignmentPlanner from '@/components/AlignmentPlanner';
 import { Separator } from "@/components/ui/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Index = () => {
   return (
@@ -26,11 +27,37 @@ const Index = () => {
             </section>
             
             <section className="px-8">
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                <MissionBuilder />
-                <ValuesChecklist />
-                <AlignmentPlanner />
-              </div>
+              <Tabs defaultValue="mission" className="w-full">
+                <TabsList className="w-full bg-black-600 p-1">
+                  <TabsTrigger value="mission" className="flex-1">
+                    Mission Statement Builder
+                  </TabsTrigger>
+                  <TabsTrigger value="values" className="flex-1">
+                    Personal Values Checklist
+                  </TabsTrigger>
+                  <TabsTrigger value="alignment" className="flex-1">
+                    Mission-Operations Alignment
+                  </TabsTrigger>
+                </TabsList>
+                
+                <TabsContent value="mission">
+                  <div className="grid gap-8 md:grid-cols-1">
+                    <MissionBuilder />
+                  </div>
+                </TabsContent>
+                
+                <TabsContent value="values">
+                  <div className="grid gap-8 md:grid-cols-1">
+                    <ValuesChecklist />
+                  </div>
+                </TabsContent>
+                
+                <TabsContent value="alignment">
+                  <div className="grid gap-8 md:grid-cols-1">
+                    <AlignmentPlanner />
+                  </div>
+                </TabsContent>
+              </Tabs>
             </section>
           </div>
         </main>
