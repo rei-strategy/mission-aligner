@@ -19,7 +19,7 @@ const AIOutput = ({ output, onSave }: AIOutputProps) => {
           value={output}
           readOnly
           placeholder="AI suggestions will appear here..."
-          className="min-h-[400px] text-base bg-[#F1F1F1] text-[#222222] placeholder:text-[#555555]"
+          className="min-h-[300px] text-base bg-[#F1F1F1] text-[#222222] placeholder:text-[#555555]"
         />
         <Button 
           onClick={onSave}
