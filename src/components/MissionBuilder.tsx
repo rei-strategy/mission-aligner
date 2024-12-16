@@ -42,7 +42,7 @@ const MissionBuilder = () => {
                 placeholder="Type your answer here..."
                 value={answers[index]}
                 onChange={(e) => handleAnswerChange(index, e.target.value)}
-                className="min-h-[80px] text-base"
+                className="min-h-[80px] text-base bg-[#F1F1F1] text-[#222222] placeholder:text-[#555555]"
               />
             </div>
           ))}
