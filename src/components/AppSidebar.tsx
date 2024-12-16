@@ -26,14 +26,14 @@ const ChapterCard = ({ chapter }: { chapter: typeof chapters[0] }) => {
   const Icon = chapter.icon;
   
   return (
-    <Card className="hover:bg-accent cursor-pointer transition-colors group">
+    <Card className="bg-black-700 hover:bg-black-600 cursor-pointer transition-colors group border-black-500">
       <CardContent className="p-4 flex items-start space-x-4">
-        <div className="bg-primary/10 p-2 rounded-lg group-hover:bg-primary/20 transition-colors">
-          <Icon className="h-5 w-5 text-primary" />
+        <div className="bg-blue-600/10 p-2 rounded-lg group-hover:bg-blue-600/20 transition-colors">
+          <Icon className="h-5 w-5 text-blue-300" />
         </div>
         <div className="space-y-1">
-          <h3 className="font-medium leading-none">Chapter {chapter.id}</h3>
-          <p className="text-sm text-muted-foreground">{chapter.title}</p>
+          <h3 className="font-medium leading-none text-gray-100">Chapter {chapter.id}</h3>
+          <p className="text-sm text-gray-400">{chapter.title}</p>
         </div>
       </CardContent>
     </Card>
@@ -42,10 +42,10 @@ const ChapterCard = ({ chapter }: { chapter: typeof chapters[0] }) => {
 
 export function AppSidebar() {
   return (
-    <Sidebar>
-      <SidebarHeader className="border-b p-4">
-        <h2 className="text-lg font-semibold">Chapters</h2>
-        <p className="text-sm text-muted-foreground">Launch your sober living journey</p>
+    <Sidebar className="bg-black-800 border-black-600">
+      <SidebarHeader className="border-b border-black-600 p-4">
+        <h2 className="text-lg font-semibold text-gray-100">Chapters</h2>
+        <p className="text-sm text-gray-400">Launch your sober living journey</p>
       </SidebarHeader>
       <SidebarContent className="p-4">
         <div className="space-y-4">
