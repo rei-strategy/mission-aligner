@@ -79,7 +79,7 @@ const MissionBuilder = () => {
         onSaveClick={handleSave}
         isGenerating={isGenerating}
       />
-      <AIOutput output={aiOutput} />
+      <AIOutput output={aiOutput} onSave={handleSave} />
     </div>
   );
 };

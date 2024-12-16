@@ -40,22 +40,14 @@ const MissionInputForm = ({
             </div>
           ))}
         </div>
-        <div className="flex gap-4">
-          <Button 
-            onClick={onGenerateClick} 
-            className="flex-1 bg-purple-600 hover:bg-purple-700 text-lg py-6"
-            disabled={isGenerating}
-          >
-            <Sparkles className="mr-2 h-5 w-5" />
-            {isGenerating ? "Generating..." : "Get AI Suggestions"}
-          </Button>
-          <Button 
-            onClick={onSaveClick} 
-            className="flex-1 bg-blue-600 hover:bg-blue-700 text-lg py-6"
-          >
-            Save Mission Statement
-          </Button>
-        </div>
+        <Button 
+          onClick={onGenerateClick} 
+          className="w-full bg-purple-600 hover:bg-purple-700 text-lg py-6"
+          disabled={isGenerating}
+        >
+          <Sparkles className="mr-2 h-5 w-5" />
+          {isGenerating ? "Generating..." : "Get AI Suggestions"}
+        </Button>
       </CardContent>
     </Card>
   );
