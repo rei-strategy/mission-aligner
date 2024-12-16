@@ -16,8 +16,9 @@ const Index = () => {
             <header className="text-center mb-12">
               <h1 className="text-3xl font-bold text-gray-100 mb-2">Sober Living for Beginners</h1>
               <p className="text-gray-400">Your step-by-step guide to establishing and managing a successful sober living business</p>
-              <Separator className="my-8" />
             </header>
+            
+            <Separator className="w-full bg-gray-700" />
             
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               <MissionBuilder />
