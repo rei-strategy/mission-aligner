@@ -12,7 +12,7 @@ const Index = () => {
     <SidebarProvider>
       <div className="flex min-h-screen w-full bg-black-800">
         <AppSidebar />
-        <main className="flex-1 bg-black-700 p-6">
+        <main className="flex-1 bg-black-400 p-6">
           <div className="max-w-6xl mx-auto space-y-10">
             <header className="text-center mb-10 pt-6">
               <h1 className="text-4xl font-bold text-gray-100 mb-3">Sober Living for Beginners</h1>
