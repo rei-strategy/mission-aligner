@@ -25,8 +25,7 @@ const Index = () => {
               <p className="text-gray-400">This section will contain additional resources and guidance for your sober living business journey.</p>
             </section>
             
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-100 mb-6 text-center">Interactive Tools</h2>
+            <section className="px-8">
               <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                 <MissionBuilder />
                 <ValuesChecklist />
