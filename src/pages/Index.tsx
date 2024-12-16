@@ -28,7 +28,7 @@ const Index = () => {
             
             <section className="px-8">
               <Tabs defaultValue="mission" className="w-full">
-                <TabsList className="w-full bg-white p-2 rounded-xl mb-6 shadow-sm">
+                <TabsList className="w-full bg-white py-4 px-2 rounded-xl mb-6 shadow-sm">
                   <TabsTrigger value="mission" className="flex-1 px-6 py-3 text-gray-700 data-[state=active]:bg-[#222222] data-[state=active]:text-white">
                     Mission Statement Builder
                   </TabsTrigger>
