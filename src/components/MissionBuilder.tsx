@@ -76,7 +76,7 @@ const MissionBuilder = () => {
 
   return (
     <div className="flex gap-6">
-      <Card className="w-3/4 animate-fade-in">
+      <Card className="w-[65%] animate-fade-in">
         <CardHeader>
           <CardTitle className="text-accent">Mission Statement Builder</CardTitle>
         </CardHeader>
@@ -113,7 +113,7 @@ const MissionBuilder = () => {
         </CardContent>
       </Card>
 
-      <Card className="w-1/4 animate-fade-in">
+      <Card className="w-[35%] animate-fade-in">
         <CardHeader>
           <CardTitle className="text-accent">AI Generated Output</CardTitle>
         </CardHeader>
