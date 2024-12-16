@@ -26,19 +26,19 @@ const MissionBuilder = () => {
       <CardHeader>
         <CardTitle className="text-accent">Mission Statement Builder</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="space-y-2">
+      <CardContent className="space-y-6">
+        <div className="space-y-3">
           {prompts.map((prompt, index) => (
-            <p key={index} className="text-sm text-muted-foreground">{prompt}</p>
+            <p key={index} className="text-base text-muted-foreground">{prompt}</p>
           ))}
         </div>
         <Textarea
           placeholder="Our mission is to..."
           value={mission}
           onChange={(e) => setMission(e.target.value)}
-          className="min-h-[150px]"
+          className="min-h-[200px] text-lg"
         />
-        <Button onClick={handleSave} className="w-full bg-primary hover:bg-primary/90">
+        <Button onClick={handleSave} className="w-full bg-primary hover:bg-primary/90 text-lg py-6">
           Save Mission Statement
         </Button>
       </CardContent>

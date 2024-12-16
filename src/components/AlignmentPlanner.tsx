@@ -40,32 +40,33 @@ const AlignmentPlanner = () => {
       <CardHeader>
         <CardTitle className="text-accent">Mission-Operations Alignment</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-6">
         {alignments.map((item) => (
-          <div key={item.id} className="space-y-2">
+          <div key={item.id} className="space-y-3 p-4 rounded-lg bg-black-700">
             <Input
               placeholder="Mission Component"
               value={item.mission}
               onChange={(e) => updateAlignment(item.id, 'mission', e.target.value)}
-              className="mb-2"
+              className="text-base mb-3"
             />
             <Input
               placeholder="Operational Strategy"
               value={item.strategy}
               onChange={(e) => updateAlignment(item.id, 'strategy', e.target.value)}
+              className="text-base"
             />
           </div>
         ))}
         <Button 
           onClick={addAlignment}
           variant="outline" 
-          className="w-full mb-2"
+          className="w-full mb-3 text-lg py-6"
         >
           Add Another Alignment
         </Button>
         <Button 
           onClick={handleSave}
-          className="w-full bg-primary hover:bg-primary/90"
+          className="w-full bg-primary hover:bg-primary/90 text-lg py-6"
         >
           Save Alignment Plan
         </Button>
