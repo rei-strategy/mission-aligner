@@ -38,7 +38,7 @@ const MissionBuilder = () => {
           onChange={(e) => setMission(e.target.value)}
           className="min-h-[200px] text-lg"
         />
-        <Button onClick={handleSave} className="w-full bg-primary hover:bg-primary/90 text-lg py-6">
+        <Button onClick={handleSave} className="w-full bg-blue-600 hover:bg-blue-700 text-lg py-6">
           Save Mission Statement
         </Button>
       </CardContent>
