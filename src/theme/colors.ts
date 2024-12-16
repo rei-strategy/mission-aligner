@@ -5,16 +5,16 @@ export const colors = {
   background: "hsl(var(--background))",
   foreground: "hsl(var(--foreground))",
   primary: {
-    DEFAULT: "#000000",
-    foreground: "#FFFFFF",
+    DEFAULT: "hsl(var(--primary))",
+    foreground: "hsl(var(--primary-foreground))",
   },
   secondary: {
-    DEFAULT: "#F5F5F5",
-    foreground: "#000000",
+    DEFAULT: "hsl(var(--secondary))",
+    foreground: "hsl(var(--secondary-foreground))",
   },
   accent: {
-    DEFAULT: "#000000",
-    foreground: "#FFFFFF",
+    DEFAULT: "hsl(var(--accent))",
+    foreground: "hsl(var(--accent-foreground))",
   },
   destructive: {
     DEFAULT: "hsl(var(--destructive))",
