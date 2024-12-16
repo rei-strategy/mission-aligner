@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { Sparkles } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const MissionBuilder = () => {
   const [answers, setAnswers] = useState<string[]>(['', '', '']);
@@ -42,32 +43,23 @@ const MissionBuilder = () => {
     }
 
     try {
-      const response = await fetch('/api/generate-mission', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          answers: answers
-        })
+      const { data, error } = await supabase.functions.invoke('generate-mission', {
+        body: { answers }
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to generate mission statement');
+      if (error) {
+        throw error;
       }
 
-      const data = await response.json();
-      const aiSuggestion = data.mission;
-      
       // Update first textarea with AI response, clear others
       const newAnswers = [...answers];
-      newAnswers[0] = aiSuggestion;
+      newAnswers[0] = data.mission;
       newAnswers[1] = '';
       newAnswers[2] = '';
       setAnswers(newAnswers);
       
       toast.success("AI suggestion generated!");
-      console.log("Generated mission statement:", aiSuggestion);
+      console.log("Generated mission statement:", data.mission);
     } catch (error) {
       console.error("Error generating mission statement:", error);
       toast.error("Failed to generate mission statement. Please try again.");
