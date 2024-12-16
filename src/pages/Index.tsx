@@ -18,7 +18,7 @@ const Index = () => {
               <p className="text-gray-400">Your step-by-step guide to establishing and managing a successful sober living business</p>
             </header>
 
-            <Separator className="bg-black-600 my-8" />
+            <Separator className="bg-black-600 mt-4 mb-8" />
             
             <section className="bg-black-800 rounded-lg p-6">
               <h2 className="text-2xl font-semibold text-gray-100 mb-4">Additional Resources</h2>
