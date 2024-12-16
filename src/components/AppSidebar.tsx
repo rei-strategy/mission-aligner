@@ -26,7 +26,7 @@ const ChapterCard = ({ chapter }: { chapter: typeof chapters[0] }) => {
   const Icon = chapter.icon;
   
   return (
-    <Card className="bg-black-700 hover:bg-black-600 cursor-pointer transition-colors group border-black-500">
+    <Card className="bg-black-600 hover:bg-black-500 cursor-pointer transition-colors group border-black-500">
       <CardContent className="p-4 flex items-start space-x-4">
         <div className="bg-blue-600/10 p-2 rounded-lg group-hover:bg-blue-600/20 transition-colors">
           <Icon className="h-5 w-5 text-blue-300" />
@@ -56,4 +56,4 @@ export function AppSidebar() {
       </SidebarContent>
     </Sidebar>
   );
-}
+};
