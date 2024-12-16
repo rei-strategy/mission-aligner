@@ -42,31 +42,13 @@ const MissionBuilder = () => {
     }
 
     try {
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      const response = await fetch('/api/generate-mission', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
         },
         body: JSON.stringify({
-          model: "gpt-4o",
-          messages: [
-            {
-              role: "system",
-              content: "You are an expert in crafting compelling mission statements for recovery and rehabilitation organizations. Create a concise, impactful mission statement that captures the essence of the organization's goals and values."
-            },
-            {
-              role: "user",
-              content: `Please create a compelling mission statement based on these responses:
-                Impact desired: ${answers[0]}
-                Transformation approach: ${answers[1]}
-                Unique value: ${answers[2]}
-                
-                Create a cohesive, professional mission statement that incorporates these elements while maintaining a tone of compassion and hope. The statement should be clear, memorable, and inspiring.`
-            }
-          ],
-          temperature: 0.7,
-          max_tokens: 200
+          answers: answers
         })
       });
 
@@ -75,7 +57,7 @@ const MissionBuilder = () => {
       }
 
       const data = await response.json();
-      const aiSuggestion = data.choices[0].message.content.trim();
+      const aiSuggestion = data.mission;
       
       // Update first textarea with AI response, clear others
       const newAnswers = [...answers];
