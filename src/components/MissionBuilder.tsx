@@ -30,7 +30,7 @@ const MissionBuilder = () => {
     }
   };
 
-  const generateAIMission = () => {
+  const generateAIMission = async () => {
     setIsGenerating(true);
     console.log("Generating AI mission from answers:", answers);
 
@@ -41,23 +41,57 @@ const MissionBuilder = () => {
       return;
     }
 
-    // Simulate AI processing
-    setTimeout(() => {
-      const combinedAnswers = answers.filter(answer => answer.trim());
+    try {
+      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+        },
+        body: JSON.stringify({
+          model: "gpt-4o",
+          messages: [
+            {
+              role: "system",
+              content: "You are an expert in crafting compelling mission statements for recovery and rehabilitation organizations. Create a concise, impactful mission statement that captures the essence of the organization's goals and values."
+            },
+            {
+              role: "user",
+              content: `Please create a compelling mission statement based on these responses:
+                Impact desired: ${answers[0]}
+                Transformation approach: ${answers[1]}
+                Unique value: ${answers[2]}
+                
+                Create a cohesive, professional mission statement that incorporates these elements while maintaining a tone of compassion and hope. The statement should be clear, memorable, and inspiring.`
+            }
+          ],
+          temperature: 0.7,
+          max_tokens: 200
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to generate mission statement');
+      }
+
+      const data = await response.json();
+      const aiSuggestion = data.choices[0].message.content.trim();
       
-      // Create an enhanced mission statement
-      const aiSuggestion = `Our mission is to ${combinedAnswers[0].toLowerCase()}. Through our dedicated approach, we will ${combinedAnswers[1].toLowerCase()}. ${combinedAnswers[2] ? `What sets us apart is our ability to ${combinedAnswers[2].toLowerCase()}.` : ''}`;
-      
-      // Update all textareas with the enhanced content
+      // Update first textarea with AI response, clear others
       const newAnswers = [...answers];
       newAnswers[0] = aiSuggestion;
       newAnswers[1] = '';
       newAnswers[2] = '';
       setAnswers(newAnswers);
       
-      setIsGenerating(false);
       toast.success("AI suggestion generated!");
-    }, 1500);
+      console.log("Generated mission statement:", aiSuggestion);
+    } catch (error) {
+      console.error("Error generating mission statement:", error);
+      toast.error("Failed to generate mission statement. Please try again.");
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   return (
