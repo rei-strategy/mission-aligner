@@ -33,7 +33,7 @@ const MissionBuilder = () => {
 
   const generateAIMission = async () => {
     setIsGenerating(true);
-    console.log("Generating AI mission from answers:", answers);
+    console.log("Starting AI mission generation with answers:", answers);
 
     // Check if we have enough content to generate
     if (answers.filter(answer => answer.trim()).length < 2) {
@@ -43,12 +43,21 @@ const MissionBuilder = () => {
     }
 
     try {
+      console.log("Invoking Supabase Edge Function: generate-mission");
       const { data, error } = await supabase.functions.invoke('generate-mission', {
         body: { answers }
       });
 
+      console.log("Edge Function response:", { data, error });
+
       if (error) {
-        throw error;
+        console.error("Supabase Edge Function error:", error);
+        throw new Error(error.message || 'Failed to generate mission statement');
+      }
+
+      if (!data?.mission) {
+        console.error("No mission data in response:", data);
+        throw new Error('Invalid response from mission generator');
       }
 
       // Update first textarea with AI response, clear others
@@ -59,10 +68,10 @@ const MissionBuilder = () => {
       setAnswers(newAnswers);
       
       toast.success("AI suggestion generated!");
-      console.log("Generated mission statement:", data.mission);
+      console.log("Successfully generated mission statement:", data.mission);
     } catch (error) {
-      console.error("Error generating mission statement:", error);
-      toast.error("Failed to generate mission statement. Please try again.");
+      console.error("Error in generateAIMission:", error);
+      toast.error(error.message || "Failed to generate mission statement. Please try again.");
     } finally {
       setIsGenerating(false);
     }

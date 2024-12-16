@@ -9,16 +9,20 @@ const corsHeaders = {
 };
 
 serve(async (req) => {
+  console.log("Edge Function called with method:", req.method);
+  
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
+    console.log("Handling CORS preflight request");
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
     const { answers } = await req.json();
-    console.log('Received answers:', answers);
+    console.log('Received answers for processing:', answers);
 
     if (!openAIApiKey) {
+      console.error('OpenAI API key not configured');
       throw new Error('OpenAI API key not configured');
     }
 
@@ -31,6 +35,7 @@ serve(async (req) => {
     
     Generate a concise, powerful, and professional mission statement that captures these elements. The mission statement should be inspiring and focused on the recovery community.`;
 
+    console.log('Sending request to OpenAI');
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -50,13 +55,16 @@ serve(async (req) => {
     });
 
     const data = await response.json();
-    console.log('OpenAI response:', data);
+    console.log('Received OpenAI response:', data);
 
     if (!response.ok) {
+      console.error('OpenAI API error:', data.error);
       throw new Error(data.error?.message || 'Failed to generate mission statement');
     }
 
     const mission = data.choices[0].message.content.trim();
+    console.log('Successfully generated mission:', mission);
+    
     return new Response(JSON.stringify({ mission }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
