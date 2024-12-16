@@ -13,7 +13,7 @@ const Index = () => {
         <AppSidebar />
         <main className="flex-1 bg-black-700 p-4">
           <div className="max-w-6xl mx-auto space-y-8">
-            <header className="text-center mb-12">
+            <header className="text-center mb-8">
               <h1 className="text-3xl font-bold text-gray-100 mb-2">Sober Living for Beginners</h1>
               <p className="text-gray-400">Your step-by-step guide to establishing and managing a successful sober living business</p>
             </header>
