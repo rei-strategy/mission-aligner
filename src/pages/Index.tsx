@@ -12,30 +12,30 @@ const Index = () => {
     <SidebarProvider>
       <div className="flex min-h-screen w-full bg-black-800">
         <AppSidebar />
-        <main className="flex-1 bg-black-400 p-6">
+        <main className="flex-1 bg-gray-100 p-6">
           <div className="max-w-6xl mx-auto space-y-10">
             <header className="text-center mb-10 pt-6">
-              <h1 className="text-4xl font-bold text-gray-100 mb-3">Sober Living for Beginners</h1>
-              <p className="text-lg text-gray-400">Your step-by-step guide to establishing and managing a successful sober living business</p>
+              <h1 className="text-4xl font-bold text-gray-800 mb-3">Sober Living for Beginners</h1>
+              <p className="text-lg text-gray-600">Your step-by-step guide to establishing and managing a successful sober living business</p>
             </header>
 
-            <Separator className="bg-black-600 my-10" />
+            <Separator className="bg-gray-200 my-10" />
             
-            <section className="bg-black-800 rounded-xl p-8 shadow-lg">
-              <h2 className="text-2xl font-semibold text-gray-100 mb-4">Additional Resources</h2>
-              <p className="text-gray-400 text-lg">This section will contain additional resources and guidance for your sober living business journey.</p>
+            <section className="bg-white rounded-xl p-8 shadow-lg">
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Additional Resources</h2>
+              <p className="text-gray-600 text-lg">This section will contain additional resources and guidance for your sober living business journey.</p>
             </section>
             
             <section className="px-8">
               <Tabs defaultValue="mission" className="w-full">
-                <TabsList className="w-full bg-black-600 p-2 rounded-xl mb-6">
-                  <TabsTrigger value="mission" className="flex-1 px-6 py-3">
+                <TabsList className="w-full bg-white p-2 rounded-xl mb-6 shadow-sm">
+                  <TabsTrigger value="mission" className="flex-1 px-6 py-3 text-gray-700 data-[state=active]:bg-gray-100">
                     Mission Statement Builder
                   </TabsTrigger>
-                  <TabsTrigger value="values" className="flex-1 px-6 py-3">
+                  <TabsTrigger value="values" className="flex-1 px-6 py-3 text-gray-700 data-[state=active]:bg-gray-100">
                     Personal Values Checklist
                   </TabsTrigger>
-                  <TabsTrigger value="alignment" className="flex-1 px-6 py-3">
+                  <TabsTrigger value="alignment" className="flex-1 px-6 py-3 text-gray-700 data-[state=active]:bg-gray-100">
                     Mission-Operations Alignment
                   </TabsTrigger>
                 </TabsList>
