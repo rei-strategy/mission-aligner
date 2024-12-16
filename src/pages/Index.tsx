@@ -29,13 +29,13 @@ const Index = () => {
             <section className="px-8">
               <Tabs defaultValue="mission" className="w-full">
                 <TabsList className="w-full bg-white p-2 rounded-xl mb-6 shadow-sm">
-                  <TabsTrigger value="mission" className="flex-1 px-6 py-3 text-gray-700 data-[state=active]:bg-gray-100">
+                  <TabsTrigger value="mission" className="flex-1 px-6 py-3 text-gray-700 data-[state=active]:bg-[#222222] data-[state=active]:text-white">
                     Mission Statement Builder
                   </TabsTrigger>
-                  <TabsTrigger value="values" className="flex-1 px-6 py-3 text-gray-700 data-[state=active]:bg-gray-100">
+                  <TabsTrigger value="values" className="flex-1 px-6 py-3 text-gray-700 data-[state=active]:bg-[#222222] data-[state=active]:text-white">
                     Personal Values Checklist
                   </TabsTrigger>
-                  <TabsTrigger value="alignment" className="flex-1 px-6 py-3 text-gray-700 data-[state=active]:bg-gray-100">
+                  <TabsTrigger value="alignment" className="flex-1 px-6 py-3 text-gray-700 data-[state=active]:bg-[#222222] data-[state=active]:text-white">
                     Mission-Operations Alignment
                   </TabsTrigger>
                 </TabsList>
