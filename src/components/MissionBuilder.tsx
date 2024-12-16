@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 
 const MissionBuilder = () => {
   const [answers, setAnswers] = useState<string[]>(['', '', '']);
+  const [aiOutput, setAiOutput] = useState<string>('');
   const [isGenerating, setIsGenerating] = useState(false);
   
   const prompts = [
@@ -60,12 +61,8 @@ const MissionBuilder = () => {
         throw new Error('Invalid response from mission generator');
       }
 
-      // Update first textarea with AI response, clear others
-      const newAnswers = [...answers];
-      newAnswers[0] = data.mission;
-      newAnswers[1] = '';
-      newAnswers[2] = '';
-      setAnswers(newAnswers);
+      // Update AI output textarea
+      setAiOutput(data.mission);
       
       toast.success("AI suggestion generated!");
       console.log("Successfully generated mission statement:", data.mission);
@@ -78,42 +75,58 @@ const MissionBuilder = () => {
   };
 
   return (
-    <Card className="w-full animate-fade-in">
-      <CardHeader>
-        <CardTitle className="text-accent">Mission Statement Builder</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="space-y-4">
-          {prompts.map((prompt, index) => (
-            <div key={index} className="space-y-2">
-              <p className="text-base text-muted-foreground">{prompt}</p>
-              <Textarea
-                placeholder="Type your answer here..."
-                value={answers[index]}
-                onChange={(e) => handleAnswerChange(index, e.target.value)}
-                className="min-h-[80px] text-base bg-[#F1F1F1] text-[#222222] placeholder:text-[#555555]"
-              />
-            </div>
-          ))}
-        </div>
-        <div className="flex gap-4">
-          <Button 
-            onClick={generateAIMission} 
-            className="flex-1 bg-purple-600 hover:bg-purple-700 text-lg py-6"
-            disabled={isGenerating}
-          >
-            <Sparkles className="mr-2 h-5 w-5" />
-            {isGenerating ? "Generating..." : "Get AI Suggestions"}
-          </Button>
-          <Button 
-            onClick={handleSave} 
-            className="flex-1 bg-blue-600 hover:bg-blue-700 text-lg py-6"
-          >
-            Save Mission Statement
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
+    <div className="flex gap-6">
+      <Card className="w-3/4 animate-fade-in">
+        <CardHeader>
+          <CardTitle className="text-accent">Mission Statement Builder</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div className="space-y-4">
+            {prompts.map((prompt, index) => (
+              <div key={index} className="space-y-2">
+                <p className="text-base text-muted-foreground">{prompt}</p>
+                <Textarea
+                  placeholder="Type your answer here..."
+                  value={answers[index]}
+                  onChange={(e) => handleAnswerChange(index, e.target.value)}
+                  className="min-h-[80px] text-base bg-[#F1F1F1] text-[#222222] placeholder:text-[#555555]"
+                />
+              </div>
+            ))}
+          </div>
+          <div className="flex gap-4">
+            <Button 
+              onClick={generateAIMission} 
+              className="flex-1 bg-purple-600 hover:bg-purple-700 text-lg py-6"
+              disabled={isGenerating}
+            >
+              <Sparkles className="mr-2 h-5 w-5" />
+              {isGenerating ? "Generating..." : "Get AI Suggestions"}
+            </Button>
+            <Button 
+              onClick={handleSave} 
+              className="flex-1 bg-blue-600 hover:bg-blue-700 text-lg py-6"
+            >
+              Save Mission Statement
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="w-1/4 animate-fade-in">
+        <CardHeader>
+          <CardTitle className="text-accent">AI Generated Output</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Textarea
+            value={aiOutput}
+            readOnly
+            placeholder="AI suggestions will appear here..."
+            className="min-h-[400px] text-base bg-[#F1F1F1] text-[#222222] placeholder:text-[#555555]"
+          />
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 
