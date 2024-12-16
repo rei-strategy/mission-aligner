@@ -1,0 +1,59 @@
+import { Home, BookOpen, Users, Building2, Scale, Coins, Shield, HeartHandshake, FileSpreadsheet, BadgeCheck, Presentation, Settings } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarHeader,
+  SidebarTrigger
+} from "@/components/ui/sidebar";
+
+const chapters = [
+  { id: 1, title: "Getting Started", icon: Home, description: "Introduction to sober living homes" },
+  { id: 2, title: "Business Planning", icon: BookOpen, description: "Creating your business plan" },
+  { id: 3, title: "Client Management", icon: Users, description: "Managing residents effectively" },
+  { id: 4, title: "Property Setup", icon: Building2, description: "Setting up your facility" },
+  { id: 5, title: "Legal Compliance", icon: Scale, description: "Understanding regulations" },
+  { id: 6, title: "Financial Planning", icon: Coins, description: "Managing finances" },
+  { id: 7, title: "Safety Protocols", icon: Shield, description: "Ensuring resident safety" },
+  { id: 8, title: "Community Relations", icon: HeartHandshake, description: "Building relationships" },
+  { id: 9, title: "Documentation", icon: FileSpreadsheet, description: "Record keeping" },
+  { id: 10, title: "Certification", icon: BadgeCheck, description: "Getting certified" },
+  { id: 11, title: "Marketing", icon: Presentation, description: "Promoting your business" },
+  { id: 12, title: "Operations", icon: Settings, description: "Day-to-day management" }
+];
+
+const ChapterCard = ({ chapter }: { chapter: typeof chapters[0] }) => {
+  const Icon = chapter.icon;
+  
+  return (
+    <Card className="hover:bg-accent cursor-pointer transition-colors group">
+      <CardContent className="p-4 flex items-start space-x-4">
+        <div className="bg-primary/10 p-2 rounded-lg group-hover:bg-primary/20 transition-colors">
+          <Icon className="h-5 w-5 text-primary" />
+        </div>
+        <div className="space-y-1">
+          <h3 className="font-medium leading-none">Chapter {chapter.id}</h3>
+          <p className="text-sm text-muted-foreground">{chapter.title}</p>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
+
+export function AppSidebar() {
+  return (
+    <Sidebar>
+      <SidebarHeader className="border-b p-4">
+        <h2 className="text-lg font-semibold">Chapters</h2>
+        <p className="text-sm text-muted-foreground">Launch your sober living journey</p>
+      </SidebarHeader>
+      <SidebarContent className="p-4">
+        <div className="space-y-4">
+          {chapters.map((chapter) => (
+            <ChapterCard key={chapter.id} chapter={chapter} />
+          ))}
+        </div>
+      </SidebarContent>
+    </Sidebar>
+  );
+}
