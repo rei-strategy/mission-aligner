@@ -18,17 +18,20 @@ const Index = () => {
               <p className="text-gray-400">Your step-by-step guide to establishing and managing a successful sober living business</p>
             </header>
             
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              <MissionBuilder />
-              <ValuesChecklist />
-              <AlignmentPlanner />
-            </div>
-
-            <Separator className="bg-black-600 my-8" />
-            
             <section className="bg-black-800 rounded-lg p-6">
               <h2 className="text-2xl font-semibold text-gray-100 mb-4">Additional Resources</h2>
               <p className="text-gray-400">This section will contain additional resources and guidance for your sober living business journey.</p>
+            </section>
+
+            <Separator className="bg-black-600 my-8" />
+            
+            <section>
+              <h2 className="text-2xl font-semibold text-gray-100 mb-6 text-center">Interactive Tools</h2>
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <MissionBuilder />
+                <ValuesChecklist />
+                <AlignmentPlanner />
+              </div>
             </section>
           </div>
         </main>
