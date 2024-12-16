@@ -13,7 +13,7 @@ export const colors = {
     foreground: "#FFFFFF",
   },
   accent: {
-    DEFAULT: "#272B2F",
+    DEFAULT: "#D3E4FD",  // Changed to a soft blue that's more readable
     foreground: "#FFFFFF",
   },
   destructive: {
