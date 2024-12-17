@@ -73,7 +73,7 @@ const ValuesChecklist = () => {
             </Label>
           </div>
         ))}
-        <Button onClick={handleSave} className="w-full bg-primary hover:bg-primary/90 text-lg py-6">
+        <Button onClick={handleSave} className="w-full bg-[#D3E4FD] hover:bg-[#D3E4FD]/90 text-black text-lg py-6">
           Save Values
         </Button>
         {aiOutput && (
