@@ -30,7 +30,7 @@ const AIOutput = ({ output, onSave }: AIOutputProps) => {
         />
         <Button 
           onClick={handleSave}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-lg py-6"
+          className="w-full bg-[#00BEFF] hover:bg-[#00BEFF]/90 text-lg py-6"
         >
           Save Mission Statement
         </Button>
