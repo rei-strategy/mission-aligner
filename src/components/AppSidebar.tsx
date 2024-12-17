@@ -36,16 +36,16 @@ const ChapterCard = ({ chapter }: { chapter: typeof chapters[0] }) => {
   
   return (
     <Card 
-      className="bg-black-600 hover:bg-black-500 cursor-pointer transition-colors group border-black-500"
+      className="bg-white hover:bg-gray-50 cursor-pointer transition-colors group border-gray-200"
       onClick={handleClick}
     >
       <CardContent className="p-4 flex items-start space-x-4">
-        <div className="bg-blue-600/10 p-2 rounded-lg group-hover:bg-blue-600/20 transition-colors">
-          <Icon className="h-5 w-5 text-blue-300" />
+        <div className="bg-blue-50 p-2 rounded-lg group-hover:bg-blue-100 transition-colors">
+          <Icon className="h-5 w-5 text-blue-600" />
         </div>
         <div className="space-y-1">
-          <h3 className="font-medium leading-none text-gray-100">Chapter {chapter.id}</h3>
-          <p className="text-sm text-gray-400">{chapter.title}</p>
+          <h3 className="font-medium leading-none text-gray-900">Chapter {chapter.id}</h3>
+          <p className="text-sm text-gray-600">{chapter.title}</p>
         </div>
       </CardContent>
     </Card>
@@ -54,10 +54,10 @@ const ChapterCard = ({ chapter }: { chapter: typeof chapters[0] }) => {
 
 export function AppSidebar() {
   return (
-    <Sidebar className="bg-black-800 border-black-600">
-      <SidebarHeader className="border-b border-black-600 px-6 py-4">
-        <h2 className="text-lg font-semibold text-gray-100">Chapters</h2>
-        <p className="text-sm text-gray-400">Launch your sober living journey</p>
+    <Sidebar className="bg-gray-50 border-gray-200">
+      <SidebarHeader className="border-b border-gray-200 px-6 py-4">
+        <h2 className="text-lg font-semibold text-gray-900">Chapters</h2>
+        <p className="text-sm text-gray-600">Launch your sober living journey</p>
       </SidebarHeader>
       <SidebarContent className="px-6 py-4">
         <div className="space-y-4">
