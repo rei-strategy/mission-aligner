@@ -48,14 +48,18 @@ const ValuesChecklist = () => {
       </CardHeader>
       <CardContent className="space-y-6">
         {values.map((value) => (
-          <div key={value.id} className="flex items-center space-x-3 p-3 rounded-lg bg-[#1E3A8A] hover:bg-black-400 transition-colors">
+          <div 
+            key={value.id} 
+            className="flex items-center space-x-3 p-3 rounded-lg bg-[#1E3A8A] hover:bg-black-400 transition-colors cursor-pointer"
+            onClick={() => handleToggle(value.id)}
+          >
             <Checkbox
               id={value.id}
               checked={value.checked}
               onCheckedChange={() => handleToggle(value.id)}
-              className="h-5 w-5"
+              className="h-5 w-5 border-green-500 data-[state=checked]:bg-green-500 data-[state=checked]:text-white"
             />
-            <Label htmlFor={value.id} className="text-base cursor-pointer">
+            <Label htmlFor={value.id} className="text-base cursor-pointer flex-1">
               {value.label}
             </Label>
           </div>
