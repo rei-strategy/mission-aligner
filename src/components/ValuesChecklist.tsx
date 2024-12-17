@@ -61,7 +61,14 @@ const ValuesChecklist = () => {
               onCheckedChange={() => handleToggle(value.id)}
               className="h-5 w-5"
             />
-            <Label htmlFor={value.id} className="text-base cursor-pointer">
+            <Label 
+              htmlFor={value.id} 
+              className="text-base cursor-pointer flex-grow"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleToggle(value.id);
+              }}
+            >
               {value.label}
             </Label>
           </div>
