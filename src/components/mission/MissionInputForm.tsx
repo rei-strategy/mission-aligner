@@ -42,7 +42,7 @@ const MissionInputForm = ({
         </div>
         <Button 
           onClick={onGenerateClick} 
-          className="w-full bg-emerald-600 hover:bg-emerald-700 text-lg py-6"
+          className="w-full bg-[#00BEFF] hover:bg-[#00BEFF]/90 text-lg py-6"
           disabled={isGenerating}
         >
           <Sparkles className="mr-2 h-5 w-5" />
