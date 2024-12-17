@@ -64,10 +64,6 @@ const ValuesChecklist = () => {
             <Label 
               htmlFor={value.id} 
               className="text-base cursor-pointer flex-grow"
-              onClick={(e) => {
-                e.stopPropagation();
-                handleToggle(value.id);
-              }}
             >
               {value.label}
             </Label>
