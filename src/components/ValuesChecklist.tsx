@@ -50,9 +50,10 @@ const ValuesChecklist = () => {
         {values.map((value) => (
           <div 
             key={value.id} 
-            className={`flex items-center space-x-3 p-3 rounded-lg transition-colors ${
+            className={`flex items-center space-x-3 p-3 rounded-lg transition-colors cursor-pointer ${
               value.checked ? 'bg-[#0A1D4D]' : 'bg-[#1E3A8A]'
             }`}
+            onClick={() => handleToggle(value.id)}
           >
             <Checkbox
               id={value.id}
