@@ -48,7 +48,7 @@ const ValuesChecklist = () => {
       </CardHeader>
       <CardContent className="space-y-6">
         {values.map((value) => (
-          <div key={value.id} className="flex items-center space-x-3 p-3 rounded-lg hover:bg-black-400 transition-colors">
+          <div key={value.id} className="flex items-center space-x-3 p-3 rounded-lg bg-[#1E3A8A] hover:bg-black-400 transition-colors">
             <Checkbox
               id={value.id}
               checked={value.checked}
