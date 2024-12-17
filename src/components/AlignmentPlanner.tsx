@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -14,6 +14,16 @@ const AlignmentPlanner = () => {
   const [alignments, setAlignments] = useState<AlignmentItem[]>([
     { id: '1', mission: '', strategy: '' }
   ]);
+  const [title, setTitle] = useState<string>('Mission-Operations Alignment');
+
+  useEffect(() => {
+    const storedMission = localStorage.getItem('missionOutput');
+    if (storedMission) {
+      // Create a dynamic title based on the mission output
+      const words = storedMission.split(' ').slice(0, 3).join(' ');
+      setTitle(`Operational Alignment with ${words}...`);
+    }
+  }, []);
 
   const addAlignment = () => {
     setAlignments([...alignments, { 
@@ -38,7 +48,7 @@ const AlignmentPlanner = () => {
   return (
     <Card className="w-full animate-fade-in">
       <CardHeader>
-        <CardTitle className="text-accent">Mission-Operations Alignment</CardTitle>
+        <CardTitle className="text-accent">{title}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         {alignments.map((item) => (

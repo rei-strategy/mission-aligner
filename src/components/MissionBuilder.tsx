@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import MissionInputForm from './mission/MissionInputForm';
@@ -14,6 +14,13 @@ const MissionBuilder = () => {
     "How will your work transform lives?",
     "What unique value do you bring to those in recovery?",
   ];
+
+  useEffect(() => {
+    // Store AI output in localStorage when it changes
+    if (aiOutput) {
+      localStorage.setItem('missionOutput', aiOutput);
+    }
+  }, [aiOutput]);
 
   const handleAnswerChange = (index: number, value: string) => {
     const newAnswers = [...answers];
@@ -59,6 +66,7 @@ const MissionBuilder = () => {
       }
 
       setAiOutput(data.mission);
+      localStorage.setItem('missionOutput', data.mission);
       toast.success("AI suggestion generated!");
       console.log("Successfully generated mission statement:", data.mission);
     } catch (error) {

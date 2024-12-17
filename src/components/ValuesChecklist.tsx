@@ -21,11 +21,15 @@ const ValuesChecklist = () => {
     { id: "accountability", label: "Accountability", checked: false, priority: 0 },
   ]);
   const [aiOutput, setAiOutput] = useState<string>('');
+  const [title, setTitle] = useState<string>('Personal Values Checklist');
 
   useEffect(() => {
-    const storedAiOutput = localStorage.getItem('aiGeneratedOutput');
+    const storedAiOutput = localStorage.getItem('missionOutput');
     if (storedAiOutput) {
       setAiOutput(storedAiOutput);
+      // Create a dynamic title based on the mission output
+      const words = storedAiOutput.split(' ').slice(0, 3).join(' ');
+      setTitle(`Values Aligned with ${words}...`);
     }
   }, []);
 
@@ -44,7 +48,7 @@ const ValuesChecklist = () => {
   return (
     <Card className="w-full animate-fade-in">
       <CardHeader>
-        <CardTitle className="text-accent">Personal Values Checklist</CardTitle>
+        <CardTitle className="text-accent">{title}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         {values.map((value) => (
