@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
@@ -20,6 +20,14 @@ const ValuesChecklist = () => {
     { id: "community", label: "Community Building", checked: false, priority: 0 },
     { id: "accountability", label: "Accountability", checked: false, priority: 0 },
   ]);
+  const [savedMission, setSavedMission] = useState<string>('');
+
+  useEffect(() => {
+    const storedMission = localStorage.getItem('missionStatement');
+    if (storedMission) {
+      setSavedMission(storedMission);
+    }
+  }, []);
 
   const handleToggle = (id: string) => {
     setValues(values.map(value => 
@@ -55,6 +63,12 @@ const ValuesChecklist = () => {
         <Button onClick={handleSave} className="w-full bg-primary hover:bg-primary/90 text-lg py-6">
           Save Values
         </Button>
+        {savedMission && (
+          <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <h3 className="text-lg font-semibold mb-2 text-gray-800">Your Last Saved Mission Statement:</h3>
+            <p className="text-gray-700 whitespace-pre-line">{savedMission}</p>
+          </div>
+        )}
       </CardContent>
     </Card>
   );

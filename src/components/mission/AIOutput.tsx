@@ -46,12 +46,6 @@ const AIOutput = ({ output, onSave }: AIOutputProps) => {
         >
           Save Mission Statement
         </Button>
-        {savedMission && (
-          <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
-            <h3 className="text-lg font-semibold mb-2 text-gray-800">Your Last Saved Mission Statement:</h3>
-            <p className="text-gray-700 whitespace-pre-line">{savedMission}</p>
-          </div>
-        )}
       </CardContent>
     </Card>
   );
