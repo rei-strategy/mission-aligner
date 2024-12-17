@@ -21,7 +21,7 @@ const Index = () => {
 
             <Separator className="bg-gray-200 my-10" />
             
-            <section className="bg-white rounded-xl p-8 shadow-lg">
+            <section className="bg-white rounded-xl p-4 shadow-lg">
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">Additional Resources</h2>
               <p className="text-gray-600 text-lg">This section will contain additional resources and guidance for your sober living business journey.</p>
             </section>
