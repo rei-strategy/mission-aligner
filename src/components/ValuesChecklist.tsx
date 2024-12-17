@@ -50,8 +50,8 @@ const ValuesChecklist = () => {
         {values.map((value) => (
           <div 
             key={value.id} 
-            className={`flex items-center space-x-3 p-3 rounded-lg bg-[#1E3A8A] transition-colors ${
-              value.checked ? 'hover:bg-[#0A1D4D]' : 'hover:bg-[#1E3A8A]'
+            className={`flex items-center space-x-3 p-3 rounded-lg transition-colors ${
+              value.checked ? 'bg-[#0A1D4D]' : 'bg-[#1E3A8A]'
             }`}
           >
             <Checkbox
