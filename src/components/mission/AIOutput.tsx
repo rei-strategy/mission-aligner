@@ -9,22 +9,10 @@ interface AIOutputProps {
 }
 
 const AIOutput = ({ output, onSave }: AIOutputProps) => {
-  const [savedMission, setSavedMission] = useState<string>('');
-
-  useEffect(() => {
-    const storedMission = localStorage.getItem('missionStatement');
-    if (storedMission) {
-      setSavedMission(storedMission);
-    }
-  }, []);
-
   const handleSave = () => {
+    localStorage.setItem('aiGeneratedOutput', output);
     if (onSave) {
       onSave();
-      const storedMission = localStorage.getItem('missionStatement');
-      if (storedMission) {
-        setSavedMission(storedMission);
-      }
     }
   };
 

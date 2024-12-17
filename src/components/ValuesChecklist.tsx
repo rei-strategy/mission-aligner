@@ -20,12 +20,12 @@ const ValuesChecklist = () => {
     { id: "community", label: "Community Building", checked: false, priority: 0 },
     { id: "accountability", label: "Accountability", checked: false, priority: 0 },
   ]);
-  const [savedMission, setSavedMission] = useState<string>('');
+  const [aiOutput, setAiOutput] = useState<string>('');
 
   useEffect(() => {
-    const storedMission = localStorage.getItem('missionStatement');
-    if (storedMission) {
-      setSavedMission(storedMission);
+    const storedAiOutput = localStorage.getItem('aiGeneratedOutput');
+    if (storedAiOutput) {
+      setAiOutput(storedAiOutput);
     }
   }, []);
 
@@ -63,10 +63,10 @@ const ValuesChecklist = () => {
         <Button onClick={handleSave} className="w-full bg-primary hover:bg-primary/90 text-lg py-6">
           Save Values
         </Button>
-        {savedMission && (
+        {aiOutput && (
           <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
-            <h3 className="text-lg font-semibold mb-2 text-gray-800">Your Last Saved Mission Statement:</h3>
-            <p className="text-gray-700 whitespace-pre-line">{savedMission}</p>
+            <h3 className="text-lg font-semibold mb-2 text-gray-800">AI Generated Output:</h3>
+            <p className="text-gray-700 whitespace-pre-line">{aiOutput}</p>
           </div>
         )}
       </CardContent>
