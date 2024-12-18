@@ -1,5 +1,6 @@
 import { Home, BookOpen, Users, Building2, Scale, Coins, Shield, HeartHandshake, FileSpreadsheet, BadgeCheck, Presentation, Settings } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 import {
   Sidebar,
   SidebarContent,
@@ -22,11 +23,14 @@ const chapters = [
   { id: 12, title: "Operations", icon: Settings, description: "Day-to-day management" }
 ];
 
-const ChapterCard = ({ chapter }: { chapter: typeof chapters[0] }) => {
+const ChapterCard = ({ chapter, onClick }: { chapter: typeof chapters[0]; onClick: () => void }) => {
   const Icon = chapter.icon;
   
   return (
-    <Card className="bg-black-600 hover:bg-black-500 cursor-pointer transition-colors group border-black-500">
+    <Card 
+      className="bg-black-600 hover:bg-black-500 cursor-pointer transition-colors group border-black-500"
+      onClick={onClick}
+    >
       <CardContent className="p-4 flex items-start space-x-4">
         <div className="bg-blue-600/10 p-2 rounded-lg group-hover:bg-blue-600/20 transition-colors">
           <Icon className="h-5 w-5 text-blue-300" />
@@ -41,6 +45,12 @@ const ChapterCard = ({ chapter }: { chapter: typeof chapters[0] }) => {
 };
 
 export function AppSidebar() {
+  const navigate = useNavigate();
+
+  const handleChapterClick = (chapterId: number) => {
+    navigate(`/chapter/${chapterId}`);
+  };
+
   return (
     <Sidebar className="bg-black-800 border-black-600">
       <SidebarHeader className="border-b border-black-600 px-6 py-4">
@@ -50,10 +60,14 @@ export function AppSidebar() {
       <SidebarContent className="px-6 py-4">
         <div className="space-y-4">
           {chapters.map((chapter) => (
-            <ChapterCard key={chapter.id} chapter={chapter} />
+            <ChapterCard 
+              key={chapter.id} 
+              chapter={chapter} 
+              onClick={() => handleChapterClick(chapter.id)}
+            />
           ))}
         </div>
       </SidebarContent>
     </Sidebar>
   );
-};
+}
