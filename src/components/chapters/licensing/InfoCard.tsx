@@ -3,11 +3,15 @@ import { ListCheck } from "lucide-react";
 
 interface InfoCardProps {
   title: string;
-  items: string[] | { title: string; description: string }[];
+  items: string[] | { title: string; description: string; }[] | { section: string; tasks: { id: string; label: string; }[]; }[];
+  checkedItems?: { [key: string]: boolean };
+  onCheckboxChange?: (id: string) => void;
 }
 
-export const InfoCard = ({ title, items }: InfoCardProps) => {
-  const isZoningResearch = items.length > 0 && typeof items[0] !== 'string';
+export const InfoCard = ({ title, items, checkedItems, onCheckboxChange }: InfoCardProps) => {
+  // Helper function to determine the type of items
+  const isZoningResearch = items.length > 0 && 'title' in (items[0] as any);
+  const isTaskSection = items.length > 0 && 'section' in (items[0] as any);
 
   return (
     <Card className="bg-[#13171A] [&_*]:text-white">
@@ -20,17 +24,30 @@ export const InfoCard = ({ title, items }: InfoCardProps) => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        {isZoningResearch ? (
-          <ul>
-            {items.map((item, index) => (
+        {isTaskSection ? (
+          <div className="space-y-4">
+            {(items as { section: string; tasks: { id: string; label: string; }[]; }[]).map((section, index) => (
+              <div key={index} className="space-y-2">
+                <h3 className="font-semibold">{section.section}</h3>
+                <ul className="space-y-1">
+                  {section.tasks.map((task) => (
+                    <li key={task.id}>{task.label}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        ) : isZoningResearch ? (
+          <ul className="space-y-2">
+            {(items as { title: string; description: string; }[]).map((item, index) => (
               <li key={index}>
-                <strong>{(item as { title: string; description: string }).title}:</strong> {(item as { title: string; description: string }).description}
+                <strong>{item.title}:</strong> {item.description}
               </li>
             ))}
           </ul>
         ) : (
-          <ul>
-            {items.map((item, index) => (
+          <ul className="space-y-2">
+            {(items as string[]).map((item, index) => (
               <li key={index}>{item}</li>
             ))}
           </ul>
