@@ -6,7 +6,7 @@ import AlignmentPlanner from '@/components/AlignmentPlanner';
 
 const Chapter1 = () => {
   return (
-    <main className="flex-1 bg-gray-100 p-6">
+    <main className="flex-1 bg-[#E6E7E8] p-6">
       <div className="max-w-6xl mx-auto space-y-10">
         <header className="text-center mb-10 pt-6">
           <h1 className="text-4xl font-bold text-gray-800 mb-3">Getting Started</h1>
