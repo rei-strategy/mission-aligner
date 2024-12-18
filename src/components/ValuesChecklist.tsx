@@ -4,6 +4,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { ListChecks, Bot } from "lucide-react";
 
 interface Value {
   id: string;
@@ -48,7 +49,10 @@ const ValuesChecklist = () => {
   return (
     <Card className="w-full animate-fade-in">
       <CardHeader>
-        <CardTitle className="text-gray-900">{title}</CardTitle>
+        <CardTitle className="text-gray-900 flex items-center gap-2">
+          <ListChecks className="h-5 w-5" />
+          {title}
+        </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         {values.map((value) => (
@@ -82,7 +86,10 @@ const ValuesChecklist = () => {
         </Button>
         {aiOutput && (
           <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
-            <h3 className="text-lg font-semibold mb-2 text-gray-900">AI Generated Output:</h3>
+            <h3 className="text-lg font-semibold mb-2 text-gray-900 flex items-center gap-2">
+              <Bot className="h-5 w-5" />
+              AI Generated Output:
+            </h3>
             <p className="text-gray-700 whitespace-pre-line">{aiOutput}</p>
           </div>
         )}

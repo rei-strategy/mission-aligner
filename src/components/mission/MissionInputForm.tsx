@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Sparkles } from "lucide-react";
+import { Sparkles, PenLine } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface MissionInputFormProps {
@@ -24,7 +24,10 @@ const MissionInputForm = ({
   return (
     <Card className="w-[65%] animate-fade-in">
       <CardHeader>
-        <CardTitle className="text-gray-900">Mission Statement Builder</CardTitle>
+        <CardTitle className="text-gray-900 flex items-center gap-2">
+          <PenLine className="h-5 w-5" />
+          Mission Statement Builder
+        </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-4">

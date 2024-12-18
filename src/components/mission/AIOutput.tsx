@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { Bot } from "lucide-react";
 
 interface AIOutputProps {
   output: string;
@@ -19,7 +20,10 @@ const AIOutput = ({ output, onSave }: AIOutputProps) => {
   return (
     <Card className="w-[35%] animate-fade-in">
       <CardHeader>
-        <CardTitle className="text-gray-900">AI Generated Output</CardTitle>
+        <CardTitle className="text-gray-900 flex items-center gap-2">
+          <Bot className="h-5 w-5" />
+          AI Generated Output
+        </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <Textarea
