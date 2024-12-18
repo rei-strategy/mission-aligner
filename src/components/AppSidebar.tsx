@@ -9,18 +9,18 @@ import {
 } from "@/components/ui/sidebar";
 
 const chapters = [
-  { id: 1, title: "Getting Started", icon: Home, description: "Introduction to sober living homes" },
-  { id: 2, title: "Business Planning", icon: BookOpen, description: "Creating your business plan" },
-  { id: 3, title: "Client Management", icon: Users, description: "Managing residents effectively" },
-  { id: 4, title: "Property Setup", icon: Building2, description: "Setting up your facility" },
-  { id: 5, title: "Legal Compliance", icon: Scale, description: "Understanding regulations" },
-  { id: 6, title: "Financial Planning", icon: Coins, description: "Managing finances" },
-  { id: 7, title: "Safety Protocols", icon: Shield, description: "Ensuring resident safety" },
-  { id: 8, title: "Community Relations", icon: HeartHandshake, description: "Building relationships" },
-  { id: 9, title: "Documentation", icon: FileSpreadsheet, description: "Record keeping" },
-  { id: 10, title: "Certification", icon: BadgeCheck, description: "Getting certified" },
-  { id: 11, title: "Marketing", icon: Presentation, description: "Promoting your business" },
-  { id: 12, title: "Operations", icon: Settings, description: "Day-to-day management" }
+  { id: 1, title: "Defining Your Vision and Purpose", icon: Home, description: "Introduction to sober living homes" },
+  { id: 2, title: "Legal and Business Setup", icon: BookOpen, description: "Creating your business plan" },
+  { id: 3, title: "Financial Planning and Budgeting", icon: Coins, description: "Managing finances effectively" },
+  { id: 4, title: "Market Research and Analysis", icon: Presentation, description: "Understanding your market" },
+  { id: 5, title: "Finding the Right Property", icon: Building2, description: "Property selection process" },
+  { id: 6, title: "Setting Up Your Sober Living Home", icon: Settings, description: "Facility setup and preparation" },
+  { id: 7, title: "Licensing, Certifications, and Inspections", icon: BadgeCheck, description: "Meeting legal requirements" },
+  { id: 8, title: "Staffing Your Sober Living Home", icon: Users, description: "Building your team" },
+  { id: 9, title: "Developing Policies and Procedures", icon: FileSpreadsheet, description: "Creating operational guidelines" },
+  { id: 10, title: "Marketing and Networking", icon: HeartHandshake, description: "Building your presence" },
+  { id: 11, title: "Managing Daily Operations", icon: Scale, description: "Day-to-day management" },
+  { id: 12, title: "Ensuring Long-Term Success", icon: Shield, description: "Sustainability strategies" }
 ];
 
 const ChapterCard = ({ chapter, onClick }: { chapter: typeof chapters[0]; onClick: () => void }) => {
