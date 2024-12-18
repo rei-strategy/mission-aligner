@@ -1,8 +1,6 @@
 import { Separator } from "@/components/ui/separator";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
+import { LicensingGrid } from "@/components/chapters/LicensingGrid";
 
 const Chapter2 = () => {
   const [checkedItems, setCheckedItems] = useState<{ [key: string]: boolean }>({});
@@ -32,7 +30,7 @@ const Chapter2 = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
           <Card className="bg-white">
             <CardHeader>
-              <CardTitle className="text-xl font-semibold text-gray-800">Licensing Checklist</CardTitle>
+              <CardTitle className="text-xl font-semibold text-black">Licensing Checklist</CardTitle>
             </CardHeader>
             <CardContent>
               <Accordion type="single" collapsible className="w-full">
@@ -201,10 +199,10 @@ const Chapter2 = () => {
 
           <Card className="bg-white">
             <CardHeader>
-              <CardTitle className="text-xl font-semibold text-gray-800">Zoning Research Template</CardTitle>
+              <CardTitle className="text-xl font-semibold text-black">Zoning Research Template</CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-2 text-gray-600">
+              <ul className="space-y-2 text-black">
                 <li>• Local Zoning Laws Overview</li>
                 <li>• Residential vs Commercial Zones</li>
                 <li>• Property Use Restrictions</li>
@@ -216,10 +214,10 @@ const Chapter2 = () => {
 
           <Card className="bg-white">
             <CardHeader>
-              <CardTitle className="text-xl font-semibold text-gray-800">Legal Consultation Prep Sheet</CardTitle>
+              <CardTitle className="text-xl font-semibold text-black">Legal Consultation Prep Sheet</CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-2 text-gray-600">
+              <ul className="space-y-2 text-black">
                 <li>• Entity Structure Questions</li>
                 <li>• Liability Concerns</li>
                 <li>• Insurance Requirements</li>
