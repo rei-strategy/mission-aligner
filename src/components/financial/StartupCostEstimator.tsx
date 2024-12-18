@@ -50,7 +50,7 @@ export const StartupCostEstimator = () => {
   };
 
   return (
-    <Card className="bg-[#8E9196] border-gray-300">
+    <Card className="bg-[#13171A] border-gray-300">
       <CardHeader className="space-y-1">
         <div className="flex items-center gap-2">
           <div className="bg-blue-600/10 p-2 rounded-lg">
