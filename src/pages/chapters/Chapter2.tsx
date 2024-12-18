@@ -12,21 +12,8 @@ const Chapter2 = () => {
         <Separator className="bg-gray-200 my-10" />
         
         <section className="bg-white rounded-xl p-4 shadow-lg">
-          <h2 className="text-2xl font-semibold text-gray-800">Business Plan Components</h2>
-          <div className="space-y-4 mt-4">
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <h3 className="text-xl font-medium text-gray-700 mb-2">Executive Summary</h3>
-              <p className="text-gray-600">Overview of your sober living home business and its mission.</p>
-            </div>
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <h3 className="text-xl font-medium text-gray-700 mb-2">Market Analysis</h3>
-              <p className="text-gray-600">Understanding your target market and competition.</p>
-            </div>
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <h3 className="text-xl font-medium text-gray-700 mb-2">Financial Projections</h3>
-              <p className="text-gray-600">Detailed financial planning and forecasting.</p>
-            </div>
-          </div>
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Business Plan Components</h2>
+          <p className="text-gray-600 text-lg">Essential components and guidelines for creating a comprehensive business plan for your sober living home.</p>
         </section>
       </div>
     </main>
