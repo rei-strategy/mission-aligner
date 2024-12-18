@@ -1,4 +1,7 @@
 import { Separator } from "@/components/ui/separator";
+import DemographicsTemplate from "@/components/market/DemographicsTemplate";
+import CompetitorAnalysis from "@/components/market/CompetitorAnalysis";
+import ReferralNetwork from "@/components/market/ReferralNetwork";
 
 const Chapter4 = () => {
   return (
@@ -13,8 +16,16 @@ const Chapter4 = () => {
         
         <section className="bg-white rounded-xl p-4 shadow-lg">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">Market Analysis Fundamentals</h2>
-          <p className="text-gray-600 text-lg">Analyzing local demographics, competition, and market needs to position your sober living home effectively.</p>
+          <p className="text-gray-600 text-lg">
+            Analyzing local demographics, competition, and market needs to position your sober living home effectively.
+          </p>
         </section>
+
+        <div className="space-y-8">
+          <DemographicsTemplate />
+          <CompetitorAnalysis />
+          <ReferralNetwork />
+        </div>
       </div>
     </main>
   );
