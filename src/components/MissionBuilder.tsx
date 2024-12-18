@@ -16,7 +16,6 @@ const MissionBuilder = () => {
   ];
 
   useEffect(() => {
-    // Store AI output in localStorage when it changes
     if (aiOutput) {
       localStorage.setItem('missionOutput', aiOutput);
     }
@@ -78,7 +77,7 @@ const MissionBuilder = () => {
   };
 
   return (
-    <div className="flex gap-6">
+    <>
       <MissionInputForm
         prompts={prompts}
         answers={answers}
@@ -88,7 +87,7 @@ const MissionBuilder = () => {
         isGenerating={isGenerating}
       />
       <AIOutput output={aiOutput} onSave={handleSave} />
-    </div>
+    </>
   );
 };
 
