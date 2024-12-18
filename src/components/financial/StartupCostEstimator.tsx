@@ -50,25 +50,25 @@ export const StartupCostEstimator = () => {
   };
 
   return (
-    <Card className="bg-black-600 border-black-500">
+    <Card className="bg-[#E6E7E8] border-gray-200">
       <CardHeader className="space-y-1">
         <div className="flex items-center gap-2">
           <div className="bg-blue-600/10 p-2 rounded-lg">
-            <Coins className="h-5 w-5 text-blue-300" />
+            <Coins className="h-5 w-5 text-blue-600" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-100">Startup Cost Estimator</h2>
+          <h2 className="text-2xl font-bold text-gray-800">Startup Cost Estimator</h2>
         </div>
-        <p className="text-gray-400">Calculate your initial investment requirements</p>
+        <p className="text-gray-600">Calculate your initial investment requirements</p>
       </CardHeader>
       <CardContent>
         <div className="space-y-6">
           {costs.map((category, categoryIndex) => (
             <div key={category.category} className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-200">{category.category}</h3>
+              <h3 className="text-lg font-semibold text-gray-800">{category.category}</h3>
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {category.items.map((item, itemIndex) => (
                   <div key={item.name} className="space-y-2">
-                    <Label htmlFor={`${category.category}-${item.name}`} className="text-gray-300">
+                    <Label htmlFor={`${category.category}-${item.name}`} className="text-gray-700">
                       {item.name}
                     </Label>
                     <Input
@@ -76,7 +76,7 @@ export const StartupCostEstimator = () => {
                       type="number"
                       value={item.amount || ''}
                       onChange={(e) => handleCostChange(categoryIndex, itemIndex, e.target.value)}
-                      className="bg-black-500 border-black-400 text-gray-100"
+                      className="bg-white border-gray-200 text-gray-800"
                       placeholder="0"
                     />
                   </div>
@@ -84,10 +84,10 @@ export const StartupCostEstimator = () => {
               </div>
             </div>
           ))}
-          <div className="pt-4 border-t border-black-500">
+          <div className="pt-4 border-t border-gray-200">
             <div className="flex justify-between items-center">
-              <span className="text-lg font-semibold text-gray-200">Total Estimated Cost:</span>
-              <span className="text-2xl font-bold text-blue-300">${calculateTotal().toLocaleString()}</span>
+              <span className="text-lg font-semibold text-gray-800">Total Estimated Cost:</span>
+              <span className="text-2xl font-bold text-blue-600">${calculateTotal().toLocaleString()}</span>
             </div>
           </div>
         </div>
