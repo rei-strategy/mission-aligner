@@ -82,9 +82,9 @@ const infoCards = [
 export const LicensingGrid = ({ checkedItems, onCheckboxChange }: LicensingGridProps) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-      <Card className="bg-white">
+      <Card className="bg-white [&_*]:text-black">
         <CardHeader>
-          <CardTitle className="text-xl font-semibold text-black">Licensing Checklist</CardTitle>
+          <CardTitle className="text-xl font-semibold">Licensing Checklist</CardTitle>
         </CardHeader>
         <CardContent>
           <Accordion type="single" collapsible className="w-full">

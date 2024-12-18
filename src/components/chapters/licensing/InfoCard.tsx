@@ -7,14 +7,14 @@ interface InfoCardProps {
 
 export const InfoCard = ({ title, items }: InfoCardProps) => {
   return (
-    <Card className="bg-white">
+    <Card className="bg-white [&_*]:text-black">
       <CardHeader>
-        <CardTitle className="text-xl font-semibold text-black">{title}</CardTitle>
+        <CardTitle className="text-xl font-semibold">{title}</CardTitle>
       </CardHeader>
       <CardContent>
         <ul className="space-y-2">
           {items.map((item, index) => (
-            <li key={index} className="text-black">• {item}</li>
+            <li key={index}>• {item}</li>
           ))}
         </ul>
       </CardContent>
