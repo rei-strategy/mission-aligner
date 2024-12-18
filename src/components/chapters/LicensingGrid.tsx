@@ -105,11 +105,46 @@ const infoCards = [
   {
     title: "Legal Consultation Prep Sheet",
     items: [
-      "Entity Structure Questions",
-      "Liability Concerns",
-      "Insurance Requirements",
-      "Contract Review Points",
-      "Compliance Checklist"
+      {
+        section: "Entity Structure Questions",
+        tasks: [
+          { id: "es-1", label: "Determine optimal business structure" },
+          { id: "es-2", label: "Review tax implications" },
+          { id: "es-3", label: "Consider ownership distribution" }
+        ]
+      },
+      {
+        section: "Liability Concerns",
+        tasks: [
+          { id: "lc-1", label: "Assess potential risks" },
+          { id: "lc-2", label: "Review liability protection options" },
+          { id: "lc-3", label: "Document mitigation strategies" }
+        ]
+      },
+      {
+        section: "Insurance Requirements",
+        tasks: [
+          { id: "ir-1", label: "Research required coverage types" },
+          { id: "ir-2", label: "Compare insurance providers" },
+          { id: "ir-3", label: "Review policy exclusions" }
+        ]
+      },
+      {
+        section: "Contract Review Points",
+        tasks: [
+          { id: "cr-1", label: "Draft resident agreements" },
+          { id: "cr-2", label: "Review vendor contracts" },
+          { id: "cr-3", label: "Prepare employment agreements" }
+        ]
+      },
+      {
+        section: "Compliance Checklist",
+        tasks: [
+          { id: "cc-1", label: "Review ADA requirements" },
+          { id: "cc-2", label: "Check Fair Housing regulations" },
+          { id: "cc-3", label: "Verify local compliance standards" }
+        ]
+      }
     ]
   }
 ];
