@@ -1,6 +1,5 @@
 import { Home, BookOpen, Users, Building2, Scale, Coins, Shield, HeartHandshake, FileSpreadsheet, BadgeCheck, Presentation, Settings } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Link } from "react-router-dom";
 import {
   Sidebar,
   SidebarContent,
@@ -27,19 +26,17 @@ const ChapterCard = ({ chapter }: { chapter: typeof chapters[0] }) => {
   const Icon = chapter.icon;
   
   return (
-    <Link to={`/chapter/${chapter.id}`}>
-      <Card className="bg-black-600 hover:bg-black-500 cursor-pointer transition-colors group border-black-500">
-        <CardContent className="p-4 flex items-start space-x-4">
-          <div className="bg-blue-600/10 p-2 rounded-lg group-hover:bg-blue-600/20 transition-colors">
-            <Icon className="h-5 w-5 text-blue-300" />
-          </div>
-          <div className="space-y-1">
-            <h3 className="font-medium leading-none text-gray-100">Chapter {chapter.id}</h3>
-            <p className="text-sm text-gray-400">{chapter.title}</p>
-          </div>
-        </CardContent>
-      </Card>
-    </Link>
+    <Card className="bg-black-600 hover:bg-black-500 cursor-pointer transition-colors group border-black-500">
+      <CardContent className="p-4 flex items-start space-x-4">
+        <div className="bg-blue-600/10 p-2 rounded-lg group-hover:bg-blue-600/20 transition-colors">
+          <Icon className="h-5 w-5 text-blue-300" />
+        </div>
+        <div className="space-y-1">
+          <h3 className="font-medium leading-none text-gray-100">Chapter {chapter.id}</h3>
+          <p className="text-sm text-gray-400">{chapter.title}</p>
+        </div>
+      </CardContent>
+    </Card>
   );
 };
 
@@ -59,4 +56,4 @@ export function AppSidebar() {
       </SidebarContent>
     </Sidebar>
   );
-}
+};
