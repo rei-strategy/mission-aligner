@@ -24,9 +24,9 @@ const Chapter2 = () => {
 
         <Separator className="bg-gray-200 my-10" />
         
-        <section className="bg-white text-black rounded-xl p-4 shadow-lg">
-          <h2 className="text-2xl font-semibold text-black mb-4">Business Structure and Legal Requirements</h2>
-          <p className="text-black text-lg">Understanding the legal framework and choosing the right business structure for your sober living home operation.</p>
+        <section className="bg-white rounded-xl p-4 shadow-lg">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Business Structure and Legal Requirements</h2>
+          <p className="text-gray-600 text-lg">Understanding the legal framework and choosing the right business structure for your sober living home operation.</p>
         </section>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
