@@ -60,11 +60,46 @@ const infoCards = [
   {
     title: "Zoning Research Template",
     items: [
-      "Local Zoning Laws Overview",
-      "Residential vs Commercial Zones",
-      "Property Use Restrictions",
-      "Neighborhood Requirements",
-      "Variance Procedures"
+      {
+        section: "Local Zoning Laws Overview",
+        tasks: [
+          { id: "zl-1", label: "Review municipal zoning code" },
+          { id: "zl-2", label: "Document applicable ordinances" },
+          { id: "zl-3", label: "Check for recent amendments" }
+        ]
+      },
+      {
+        section: "Residential vs Commercial Zones",
+        tasks: [
+          { id: "rc-1", label: "Identify zone classifications" },
+          { id: "rc-2", label: "Compare permitted uses" },
+          { id: "rc-3", label: "Review transition area requirements" }
+        ]
+      },
+      {
+        section: "Property Use Restrictions",
+        tasks: [
+          { id: "pu-1", label: "Check occupancy limits" },
+          { id: "pu-2", label: "Review parking requirements" },
+          { id: "pu-3", label: "Verify setback requirements" }
+        ]
+      },
+      {
+        section: "Neighborhood Requirements",
+        tasks: [
+          { id: "nr-1", label: "Research density restrictions" },
+          { id: "nr-2", label: "Check noise ordinances" },
+          { id: "nr-3", label: "Review community guidelines" }
+        ]
+      },
+      {
+        section: "Variance Procedures",
+        tasks: [
+          { id: "vp-1", label: "Document application process" },
+          { id: "vp-2", label: "List required documentation" },
+          { id: "vp-3", label: "Note appeal procedures" }
+        ]
+      }
     ]
   },
   {
@@ -103,7 +138,13 @@ export const LicensingGrid = ({ checkedItems, onCheckboxChange }: LicensingGridP
       </Card>
 
       {infoCards.map((card, index) => (
-        <InfoCard key={index} title={card.title} items={card.items} />
+        <InfoCard 
+          key={index} 
+          title={card.title} 
+          items={card.items}
+          checkedItems={checkedItems}
+          onCheckboxChange={onCheckboxChange}
+        />
       ))}
     </div>
   );
