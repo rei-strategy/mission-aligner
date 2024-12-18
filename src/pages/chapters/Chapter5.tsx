@@ -1,6 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent } from "@/components/ui/card";
-import { Checklist, FileText, BarChart2 } from "lucide-react";
+import { ListCheck, FileText, BarChart2 } from "lucide-react";
 
 const Chapter5 = () => {
   return (
@@ -23,7 +23,7 @@ const Chapter5 = () => {
             <CardContent className="p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="bg-blue-600/10 p-2 rounded-lg group-hover:bg-blue-600/20 transition-colors">
-                  <Checklist className="h-5 w-5 text-blue-300" />
+                  <ListCheck className="h-5 w-5 text-blue-300" />
                 </div>
                 <h3 className="text-xl font-semibold">Property Suitability Checklist</h3>
               </div>
