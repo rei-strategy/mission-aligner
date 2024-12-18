@@ -78,7 +78,7 @@ const MissionBuilder = () => {
   };
 
   return (
-    <>
+    <div className="flex gap-6">
       <MissionInputForm
         prompts={prompts}
         answers={answers}
@@ -88,7 +88,7 @@ const MissionBuilder = () => {
         isGenerating={isGenerating}
       />
       <AIOutput output={aiOutput} onSave={handleSave} />
-    </>
+    </div>
   );
 };
 
