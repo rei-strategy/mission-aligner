@@ -24,7 +24,7 @@ const MissionInputForm = ({
   return (
     <Card className="w-[65%] animate-fade-in">
       <CardHeader>
-        <CardTitle className="text-accent">Mission Statement Builder</CardTitle>
+        <CardTitle className="text-gray-900">Mission Statement Builder</CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-4">
