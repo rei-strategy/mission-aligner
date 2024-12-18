@@ -1,54 +1,55 @@
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Accordion } from "@/components/ui/accordion";
+import { LicensingSection } from "./LicensingSection";
 import { ListCheck } from "lucide-react";
+
+interface Task {
+  id: string;
+  label: string;
+}
+
+interface Section {
+  section: string;
+  tasks: Task[];
+}
 
 interface InfoCardProps {
   title: string;
-  items: string[] | { title: string; description: string; }[] | { section: string; tasks: { id: string; label: string; }[]; }[];
+  items: Section[] | string[];
   checkedItems?: { [key: string]: boolean };
   onCheckboxChange?: (id: string) => void;
 }
 
-export const InfoCard = ({ title, items, checkedItems, onCheckboxChange }: InfoCardProps) => {
-  // Helper function to determine the type of items
-  const isZoningResearch = items.length > 0 && 'title' in (items[0] as any);
-  const isTaskSection = items.length > 0 && 'section' in (items[0] as any);
+export const InfoCard = ({ title, items, checkedItems = {}, onCheckboxChange = () => {} }: InfoCardProps) => {
+  // Check if items is an array of sections (for zoning research) or strings (for legal consultation)
+  const isZoningResearch = items.length > 0 && typeof items[0] !== 'string';
 
   return (
     <Card className="bg-[#13171A] [&_*]:text-white">
       <CardHeader>
         <CardTitle className="text-xl font-semibold flex items-center gap-2">
-          <div className="bg-[#00BEFF]/10 p-2 rounded-full">
-            <ListCheck className="h-5 w-5 text-[#00BEFF]" />
-          </div>
+          <ListCheck className="h-5 w-5" />
           {title}
         </CardTitle>
       </CardHeader>
       <CardContent>
-        {isTaskSection ? (
-          <div className="space-y-4">
-            {(items as { section: string; tasks: { id: string; label: string; }[]; }[]).map((section, index) => (
-              <div key={index} className="space-y-2">
-                <h3 className="font-semibold">{section.section}</h3>
-                <ul className="space-y-1">
-                  {section.tasks.map((task) => (
-                    <li key={task.id}>{task.label}</li>
-                  ))}
-                </ul>
-              </div>
+        {isZoningResearch ? (
+          <Accordion type="single" collapsible className="w-full">
+            {(items as Section[]).map((section) => (
+              <LicensingSection
+                key={section.section}
+                value={section.section.toLowerCase().replace(/\s+/g, '-')}
+                title={section.section}
+                items={section.tasks}
+                checkedItems={checkedItems}
+                onCheckboxChange={onCheckboxChange}
+              />
             ))}
-          </div>
-        ) : isZoningResearch ? (
-          <ul className="space-y-2">
-            {(items as { title: string; description: string; }[]).map((item, index) => (
-              <li key={index}>
-                <strong>{item.title}:</strong> {item.description}
-              </li>
-            ))}
-          </ul>
+          </Accordion>
         ) : (
           <ul className="space-y-2">
             {(items as string[]).map((item, index) => (
-              <li key={index}>{item}</li>
+              <li key={index}>• {item}</li>
             ))}
           </ul>
         )}
