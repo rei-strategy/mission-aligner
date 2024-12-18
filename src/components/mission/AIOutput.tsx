@@ -19,7 +19,7 @@ const AIOutput = ({ output, onSave }: AIOutputProps) => {
   return (
     <Card className="w-[35%] animate-fade-in">
       <CardHeader>
-        <CardTitle className="text-accent">AI Generated Output</CardTitle>
+        <CardTitle className="text-gray-900">AI Generated Output</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <Textarea

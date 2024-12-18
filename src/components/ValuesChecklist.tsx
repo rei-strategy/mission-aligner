@@ -48,7 +48,7 @@ const ValuesChecklist = () => {
   return (
     <Card className="w-full animate-fade-in">
       <CardHeader>
-        <CardTitle className="text-accent">{title}</CardTitle>
+        <CardTitle className="text-gray-900">{title}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         {values.map((value) => (
@@ -82,7 +82,7 @@ const ValuesChecklist = () => {
         </Button>
         {aiOutput && (
           <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
-            <h3 className="text-lg font-semibold mb-2 text-gray-800">AI Generated Output:</h3>
+            <h3 className="text-lg font-semibold mb-2 text-gray-900">AI Generated Output:</h3>
             <p className="text-gray-700 whitespace-pre-line">{aiOutput}</p>
           </div>
         )}
