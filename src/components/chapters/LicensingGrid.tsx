@@ -1,11 +1,83 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Accordion } from "@/components/ui/accordion";
+import { LicensingSection } from "./licensing/LicensingSection";
+import { InfoCard } from "./licensing/InfoCard";
 
 interface LicensingGridProps {
   checkedItems: { [key: string]: boolean };
   onCheckboxChange: (id: string) => void;
 }
+
+const licensingSections = [
+  {
+    value: "business-license",
+    title: "Business License Requirements",
+    items: [
+      { id: "bl-1", label: "Apply for local business license" },
+      { id: "bl-2", label: "Register business name" },
+      { id: "bl-3", label: "Obtain EIN from IRS" }
+    ]
+  },
+  {
+    value: "zoning-permits",
+    title: "Zoning Permits",
+    items: [
+      { id: "zp-1", label: "Check local zoning regulations" },
+      { id: "zp-2", label: "Submit zoning permit application" },
+      { id: "zp-3", label: "Obtain property use approval" }
+    ]
+  },
+  {
+    value: "health-inspections",
+    title: "Health Inspections",
+    items: [
+      { id: "hi-1", label: "Schedule initial health inspection" },
+      { id: "hi-2", label: "Prepare facility for inspection" },
+      { id: "hi-3", label: "Obtain health department certification" }
+    ]
+  },
+  {
+    value: "fire-safety",
+    title: "Fire Safety Approvals",
+    items: [
+      { id: "fs-1", label: "Install fire safety equipment" },
+      { id: "fs-2", label: "Schedule fire marshal inspection" },
+      { id: "fs-3", label: "Obtain fire safety certification" }
+    ]
+  },
+  {
+    value: "state-certifications",
+    title: "State-Specific Certifications",
+    items: [
+      { id: "sc-1", label: "Research state requirements" },
+      { id: "sc-2", label: "Complete certification applications" },
+      { id: "sc-3", label: "Submit required documentation" }
+    ]
+  }
+];
+
+const infoCards = [
+  {
+    title: "Zoning Research Template",
+    items: [
+      "Local Zoning Laws Overview",
+      "Residential vs Commercial Zones",
+      "Property Use Restrictions",
+      "Neighborhood Requirements",
+      "Variance Procedures"
+    ]
+  },
+  {
+    title: "Legal Consultation Prep Sheet",
+    items: [
+      "Entity Structure Questions",
+      "Liability Concerns",
+      "Insurance Requirements",
+      "Contract Review Points",
+      "Compliance Checklist"
+    ]
+  }
+];
 
 export const LicensingGrid = ({ checkedItems, onCheckboxChange }: LicensingGridProps) => {
   return (
@@ -16,194 +88,23 @@ export const LicensingGrid = ({ checkedItems, onCheckboxChange }: LicensingGridP
         </CardHeader>
         <CardContent>
           <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="business-license">
-              <AccordionTrigger className="text-black">Business License Requirements</AccordionTrigger>
-              <AccordionContent>
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-2">
-                    <Checkbox 
-                      id="bl-1" 
-                      checked={checkedItems['bl-1']} 
-                      onCheckedChange={() => onCheckboxChange('bl-1')}
-                    />
-                    <label htmlFor="bl-1" className="text-black">Apply for local business license</label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox 
-                      id="bl-2" 
-                      checked={checkedItems['bl-2']} 
-                      onCheckedChange={() => onCheckboxChange('bl-2')}
-                    />
-                    <label htmlFor="bl-2" className="text-black">Register business name</label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox 
-                      id="bl-3" 
-                      checked={checkedItems['bl-3']} 
-                      onCheckedChange={() => onCheckboxChange('bl-3')}
-                    />
-                    <label htmlFor="bl-3" className="text-black">Obtain EIN from IRS</label>
-                  </div>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="zoning-permits">
-              <AccordionTrigger className="text-black">Zoning Permits</AccordionTrigger>
-              <AccordionContent>
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-2">
-                    <Checkbox 
-                      id="zp-1" 
-                      checked={checkedItems['zp-1']} 
-                      onCheckedChange={() => onCheckboxChange('zp-1')}
-                    />
-                    <label htmlFor="zp-1" className="text-black">Check local zoning regulations</label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox 
-                      id="zp-2" 
-                      checked={checkedItems['zp-2']} 
-                      onCheckedChange={() => onCheckboxChange('zp-2')}
-                    />
-                    <label htmlFor="zp-2" className="text-black">Submit zoning permit application</label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox 
-                      id="zp-3" 
-                      checked={checkedItems['zp-3']} 
-                      onCheckedChange={() => onCheckboxChange('zp-3')}
-                    />
-                    <label htmlFor="zp-3" className="text-black">Obtain property use approval</label>
-                  </div>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="health-inspections">
-              <AccordionTrigger className="text-black">Health Inspections</AccordionTrigger>
-              <AccordionContent>
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-2">
-                    <Checkbox 
-                      id="hi-1" 
-                      checked={checkedItems['hi-1']} 
-                      onCheckedChange={() => onCheckboxChange('hi-1')}
-                    />
-                    <label htmlFor="hi-1" className="text-black">Schedule initial health inspection</label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox 
-                      id="hi-2" 
-                      checked={checkedItems['hi-2']} 
-                      onCheckedChange={() => onCheckboxChange('hi-2')}
-                    />
-                    <label htmlFor="hi-2" className="text-black">Prepare facility for inspection</label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox 
-                      id="hi-3" 
-                      checked={checkedItems['hi-3']} 
-                      onCheckedChange={() => onCheckboxChange('hi-3')}
-                    />
-                    <label htmlFor="hi-3" className="text-black">Obtain health department certification</label>
-                  </div>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="fire-safety">
-              <AccordionTrigger className="text-black">Fire Safety Approvals</AccordionTrigger>
-              <AccordionContent>
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-2">
-                    <Checkbox 
-                      id="fs-1" 
-                      checked={checkedItems['fs-1']} 
-                      onCheckedChange={() => onCheckboxChange('fs-1')}
-                    />
-                    <label htmlFor="fs-1" className="text-black">Install fire safety equipment</label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox 
-                      id="fs-2" 
-                      checked={checkedItems['fs-2']} 
-                      onCheckedChange={() => onCheckboxChange('fs-2')}
-                    />
-                    <label htmlFor="fs-2" className="text-black">Schedule fire marshal inspection</label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox 
-                      id="fs-3" 
-                      checked={checkedItems['fs-3']} 
-                      onCheckedChange={() => onCheckboxChange('fs-3')}
-                    />
-                    <label htmlFor="fs-3" className="text-black">Obtain fire safety certification</label>
-                  </div>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="state-certifications">
-              <AccordionTrigger className="text-black">State-Specific Certifications</AccordionTrigger>
-              <AccordionContent>
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-2">
-                    <Checkbox 
-                      id="sc-1" 
-                      checked={checkedItems['sc-1']} 
-                      onCheckedChange={() => onCheckboxChange('sc-1')}
-                    />
-                    <label htmlFor="sc-1" className="text-black">Research state requirements</label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox 
-                      id="sc-2" 
-                      checked={checkedItems['sc-2']} 
-                      onCheckedChange={() => onCheckboxChange('sc-2')}
-                    />
-                    <label htmlFor="sc-2" className="text-black">Complete certification applications</label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox 
-                      id="sc-3" 
-                      checked={checkedItems['sc-3']} 
-                      onCheckedChange={() => onCheckboxChange('sc-3')}
-                    />
-                    <label htmlFor="sc-3" className="text-black">Submit required documentation</label>
-                  </div>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
+            {licensingSections.map((section) => (
+              <LicensingSection
+                key={section.value}
+                value={section.value}
+                title={section.title}
+                items={section.items}
+                checkedItems={checkedItems}
+                onCheckboxChange={onCheckboxChange}
+              />
+            ))}
           </Accordion>
         </CardContent>
       </Card>
 
-      <Card className="bg-white">
-        <CardHeader>
-          <CardTitle className="text-xl font-semibold text-black">Zoning Research Template</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ul className="space-y-2 text-black">
-            <li>• Local Zoning Laws Overview</li>
-            <li>• Residential vs Commercial Zones</li>
-            <li>• Property Use Restrictions</li>
-            <li>• Neighborhood Requirements</li>
-            <li>• Variance Procedures</li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      <Card className="bg-white">
-        <CardHeader>
-          <CardTitle className="text-xl font-semibold text-black">Legal Consultation Prep Sheet</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ul className="space-y-2 text-black">
-            <li>• Entity Structure Questions</li>
-            <li>• Liability Concerns</li>
-            <li>• Insurance Requirements</li>
-            <li>• Contract Review Points</li>
-            <li>• Compliance Checklist</li>
-          </ul>
-        </CardContent>
-      </Card>
+      {infoCards.map((card, index) => (
+        <InfoCard key={index} title={card.title} items={card.items} />
+      ))}
     </div>
   );
 };
