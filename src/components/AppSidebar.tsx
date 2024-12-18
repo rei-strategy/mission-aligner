@@ -5,6 +5,7 @@ import {
   Sidebar,
   SidebarContent,
   SidebarHeader,
+  SidebarProvider,
   SidebarTrigger
 } from "@/components/ui/sidebar";
 
@@ -53,18 +54,20 @@ const ChapterCard = ({ chapter }: { chapter: typeof chapters[0] }) => {
 
 export function AppSidebar() {
   return (
-    <Sidebar className="bg-black-800 border-black-600">
-      <SidebarHeader className="border-b border-black-600 px-6 py-4">
-        <h2 className="text-lg font-semibold text-gray-100">Chapters</h2>
-        <p className="text-sm text-gray-400">Launch your sober living journey</p>
-      </SidebarHeader>
-      <SidebarContent className="px-6 py-4">
-        <div className="space-y-4">
-          {chapters.map((chapter) => (
-            <ChapterCard key={chapter.id} chapter={chapter} />
-          ))}
-        </div>
-      </SidebarContent>
-    </Sidebar>
+    <SidebarProvider>
+      <Sidebar className="bg-black-800 border-black-600">
+        <SidebarHeader className="border-b border-black-600 px-6 py-4">
+          <h2 className="text-lg font-semibold text-gray-100">Chapters</h2>
+          <p className="text-sm text-gray-400">Launch your sober living journey</p>
+        </SidebarHeader>
+        <SidebarContent className="px-6 py-4">
+          <div className="space-y-4">
+            {chapters.map((chapter) => (
+              <ChapterCard key={chapter.id} chapter={chapter} />
+            ))}
+          </div>
+        </SidebarContent>
+      </Sidebar>
+    </SidebarProvider>
   );
 }
