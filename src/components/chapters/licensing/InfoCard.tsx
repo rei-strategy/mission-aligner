@@ -25,7 +25,7 @@ export const InfoCard = ({ title, items, checkedItems = {}, onCheckboxChange = (
   const isZoningResearch = items.length > 0 && typeof items[0] !== 'string';
 
   return (
-    <Card className="bg-white [&_*]:text-black">
+    <Card className="bg-[#13171A] [&_*]:text-white">
       <CardHeader>
         <CardTitle className="text-xl font-semibold flex items-center gap-2">
           <ListCheck className="h-5 w-5" />

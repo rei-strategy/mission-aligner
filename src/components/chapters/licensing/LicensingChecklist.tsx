@@ -11,7 +11,7 @@ interface LicensingChecklistProps {
 
 export const LicensingChecklist = ({ checkedItems, onCheckboxChange }: LicensingChecklistProps) => {
   return (
-    <Card className="bg-white [&_*]:text-black">
+    <Card className="bg-[#13171A] [&_*]:text-white">
       <CardHeader>
         <CardTitle className="text-xl font-semibold flex items-center gap-2">
           <ListChecks className="h-5 w-5" />

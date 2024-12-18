@@ -9,12 +9,12 @@ interface LicensingItemProps {
 
 export const LicensingItem = ({ id, label, checked, onCheckboxChange }: LicensingItemProps) => {
   return (
-    <div className="flex items-center space-x-2 [&_*]:text-black">
+    <div className="flex items-center space-x-2 [&_*]:text-white">
       <Checkbox 
         id={id} 
         checked={checked} 
         onCheckedChange={() => onCheckboxChange(id)}
-        className="border-black data-[state=checked]:bg-black data-[state=checked]:text-white"
+        className="border-white data-[state=checked]:bg-white data-[state=checked]:text-[#13171A]"
       />
       <label htmlFor={id} className="cursor-pointer">{label}</label>
     </div>

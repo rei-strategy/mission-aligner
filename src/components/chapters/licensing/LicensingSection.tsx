@@ -11,8 +11,8 @@ interface LicensingSectionProps {
 
 export const LicensingSection = ({ value, title, items, checkedItems, onCheckboxChange }: LicensingSectionProps) => {
   return (
-    <AccordionItem value={value} className="bg-white [&_*]:text-black">
-      <AccordionTrigger className="hover:text-black/70">{title}</AccordionTrigger>
+    <AccordionItem value={value} className="bg-[#13171A] [&_*]:text-white border-white/20">
+      <AccordionTrigger className="hover:text-white/70">{title}</AccordionTrigger>
       <AccordionContent>
         <div className="space-y-3">
           {items.map((item) => (
