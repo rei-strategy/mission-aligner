@@ -59,25 +59,25 @@ export const MonthlyBudgetPlanner = () => {
   };
 
   return (
-    <Card className="bg-[#E6E7E8] border-gray-200">
+    <Card className="bg-black-600 border-black-500">
       <CardHeader className="space-y-1">
         <div className="flex items-center gap-2">
           <div className="bg-blue-600/10 p-2 rounded-lg">
-            <PiggyBank className="h-5 w-5 text-blue-600" />
+            <PiggyBank className="h-5 w-5 text-blue-300" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-800">Monthly Budget Planner</h2>
+          <h2 className="text-2xl font-bold text-gray-100">Monthly Budget Planner</h2>
         </div>
-        <p className="text-gray-600">Plan your monthly income and expenses</p>
+        <p className="text-gray-400">Plan your monthly income and expenses</p>
       </CardHeader>
       <CardContent>
         <div className="space-y-6">
           {budget.map((category, categoryIndex) => (
             <div key={category.category} className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-800">{category.category}</h3>
+              <h3 className="text-lg font-semibold text-gray-200">{category.category}</h3>
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {category.items.map((item, itemIndex) => (
                   <div key={item.name} className="space-y-2">
-                    <Label htmlFor={`${category.category}-${item.name}`} className="text-gray-700">
+                    <Label htmlFor={`${category.category}-${item.name}`} className="text-gray-300">
                       {item.name}
                     </Label>
                     <Input
@@ -85,7 +85,7 @@ export const MonthlyBudgetPlanner = () => {
                       type="number"
                       value={item.amount || ''}
                       onChange={(e) => handleBudgetChange(categoryIndex, itemIndex, e.target.value)}
-                      className="bg-white border-gray-200 text-gray-800"
+                      className="bg-black-500 border-black-400 text-gray-100"
                       placeholder="0"
                     />
                   </div>
@@ -93,22 +93,22 @@ export const MonthlyBudgetPlanner = () => {
               </div>
             </div>
           ))}
-          <div className="pt-4 border-t border-gray-200 space-y-2">
+          <div className="pt-4 border-t border-black-500 space-y-2">
             <div className="flex justify-between items-center">
-              <span className="text-gray-800">Monthly Income:</span>
-              <span className="text-lg font-semibold text-green-600">
+              <span className="text-gray-200">Monthly Income:</span>
+              <span className="text-lg font-semibold text-green-400">
                 ${calculateIncome().toLocaleString()}
               </span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-gray-800">Monthly Expenses:</span>
-              <span className="text-lg font-semibold text-red-600">
+              <span className="text-gray-200">Monthly Expenses:</span>
+              <span className="text-lg font-semibold text-red-400">
                 ${calculateExpenses().toLocaleString()}
               </span>
             </div>
-            <div className="flex justify-between items-center pt-2 border-t border-gray-200">
-              <span className="text-lg font-semibold text-gray-800">Net Monthly Income:</span>
-              <span className={`text-2xl font-bold ${calculateNetIncome() >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+            <div className="flex justify-between items-center pt-2 border-t border-black-500">
+              <span className="text-lg font-semibold text-gray-200">Net Monthly Income:</span>
+              <span className={`text-2xl font-bold ${calculateNetIncome() >= 0 ? 'text-green-400' : 'text-red-400'}`}>
                 ${calculateNetIncome().toLocaleString()}
               </span>
             </div>

@@ -95,28 +95,28 @@ const fundingSources: FundingSource[] = [
 
 export const FundingSourcesExplorer = () => {
   return (
-    <Card className="bg-[#E6E7E8] border-gray-200">
+    <Card className="bg-black-600 border-black-500">
       <CardHeader className="space-y-1">
         <div className="flex items-center gap-2">
           <div className="bg-blue-600/10 p-2 rounded-lg">
-            <DollarSign className="h-5 w-5 text-blue-600" />
+            <DollarSign className="h-5 w-5 text-blue-300" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-800">Funding Sources Explorer</h2>
+          <h2 className="text-2xl font-bold text-gray-100">Funding Sources Explorer</h2>
         </div>
-        <p className="text-gray-600">Explore various funding options for your sober living home</p>
+        <p className="text-gray-400">Explore various funding options for your sober living home</p>
       </CardHeader>
       <CardContent>
         <Accordion type="single" collapsible className="space-y-2">
           {fundingSources.map((source) => (
-            <AccordionItem key={source.name} value={source.name} className="border-gray-200">
-              <AccordionTrigger className="text-gray-800 hover:text-blue-600">
+            <AccordionItem key={source.name} value={source.name} className="border-black-500">
+              <AccordionTrigger className="text-gray-100 hover:text-blue-300">
                 {source.name}
               </AccordionTrigger>
-              <AccordionContent className="text-gray-700 space-y-4">
-                <p className="text-gray-600">{source.description}</p>
+              <AccordionContent className="text-gray-300 space-y-4">
+                <p className="text-gray-400">{source.description}</p>
                 
                 <div>
-                  <h4 className="font-semibold mb-2 text-gray-800">Requirements:</h4>
+                  <h4 className="font-semibold mb-2 text-gray-200">Requirements:</h4>
                   <ul className="list-disc pl-5 space-y-1">
                     {source.requirements.map((req) => (
                       <li key={req}>{req}</li>
@@ -126,7 +126,7 @@ export const FundingSourcesExplorer = () => {
 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <h4 className="font-semibold mb-2 text-green-600">Pros:</h4>
+                    <h4 className="font-semibold mb-2 text-green-400">Pros:</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       {source.pros.map((pro) => (
                         <li key={pro}>{pro}</li>
@@ -134,7 +134,7 @@ export const FundingSourcesExplorer = () => {
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2 text-red-600">Cons:</h4>
+                    <h4 className="font-semibold mb-2 text-red-400">Cons:</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       {source.cons.map((con) => (
                         <li key={con}>{con}</li>
