@@ -14,8 +14,9 @@ export const LicensingItem = ({ id, label, checked, onCheckboxChange }: Licensin
         id={id} 
         checked={checked} 
         onCheckedChange={() => onCheckboxChange(id)}
+        className="border-black data-[state=checked]:bg-black data-[state=checked]:text-white"
       />
-      <label htmlFor={id} className="text-black">{label}</label>
+      <label htmlFor={id} className="text-black cursor-pointer">{label}</label>
     </div>
   );
 };

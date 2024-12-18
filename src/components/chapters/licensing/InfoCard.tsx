@@ -12,9 +12,9 @@ export const InfoCard = ({ title, items }: InfoCardProps) => {
         <CardTitle className="text-xl font-semibold text-black">{title}</CardTitle>
       </CardHeader>
       <CardContent>
-        <ul className="space-y-2 text-black">
+        <ul className="space-y-2">
           {items.map((item, index) => (
-            <li key={index}>• {item}</li>
+            <li key={index} className="text-black">• {item}</li>
           ))}
         </ul>
       </CardContent>
