@@ -14,7 +14,9 @@ export const LicensingChecklist = ({ checkedItems, onCheckboxChange }: Licensing
     <Card className="bg-[#13171A] [&_*]:text-white">
       <CardHeader>
         <CardTitle className="text-xl font-semibold flex items-center gap-2">
-          <ListChecks className="h-5 w-5" />
+          <div className="bg-blue-600/10 p-2 rounded-lg">
+            <ListChecks className="h-5 w-5 text-blue-300" />
+          </div>
           Licensing Checklist
         </CardTitle>
       </CardHeader>

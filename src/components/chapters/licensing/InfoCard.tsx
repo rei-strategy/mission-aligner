@@ -28,7 +28,9 @@ export const InfoCard = ({ title, items, checkedItems = {}, onCheckboxChange = (
     <Card className="bg-[#13171A] [&_*]:text-white">
       <CardHeader>
         <CardTitle className="text-xl font-semibold flex items-center gap-2">
-          <ListCheck className="h-5 w-5" />
+          <div className="bg-blue-600/10 p-2 rounded-lg">
+            <ListCheck className="h-5 w-5 text-blue-300" />
+          </div>
           {title}
         </CardTitle>
       </CardHeader>
