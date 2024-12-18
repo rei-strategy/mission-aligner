@@ -37,7 +37,7 @@ const Chapter2 = () => {
             <CardContent>
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="business-license">
-                  <AccordionTrigger>Business License Requirements</AccordionTrigger>
+                  <AccordionTrigger className="text-black">Business License Requirements</AccordionTrigger>
                   <AccordionContent>
                     <div className="space-y-3">
                       <div className="flex items-center space-x-2">
@@ -46,7 +46,7 @@ const Chapter2 = () => {
                           checked={checkedItems['bl-1']} 
                           onCheckedChange={() => handleCheckboxChange('bl-1')}
                         />
-                        <label htmlFor="bl-1">Apply for local business license</label>
+                        <label htmlFor="bl-1" className="text-black">Apply for local business license</label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <Checkbox 
@@ -54,7 +54,7 @@ const Chapter2 = () => {
                           checked={checkedItems['bl-2']} 
                           onCheckedChange={() => handleCheckboxChange('bl-2')}
                         />
-                        <label htmlFor="bl-2">Register business name</label>
+                        <label htmlFor="bl-2" className="text-black">Register business name</label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <Checkbox 
@@ -62,14 +62,14 @@ const Chapter2 = () => {
                           checked={checkedItems['bl-3']} 
                           onCheckedChange={() => handleCheckboxChange('bl-3')}
                         />
-                        <label htmlFor="bl-3">Obtain EIN from IRS</label>
+                        <label htmlFor="bl-3" className="text-black">Obtain EIN from IRS</label>
                       </div>
                     </div>
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="zoning-permits">
-                  <AccordionTrigger>Zoning Permits</AccordionTrigger>
+                  <AccordionTrigger className="text-black">Zoning Permits</AccordionTrigger>
                   <AccordionContent>
                     <div className="space-y-3">
                       <div className="flex items-center space-x-2">
@@ -78,7 +78,7 @@ const Chapter2 = () => {
                           checked={checkedItems['zp-1']} 
                           onCheckedChange={() => handleCheckboxChange('zp-1')}
                         />
-                        <label htmlFor="zp-1">Check local zoning regulations</label>
+                        <label htmlFor="zp-1" className="text-black">Check local zoning regulations</label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <Checkbox 
@@ -86,7 +86,7 @@ const Chapter2 = () => {
                           checked={checkedItems['zp-2']} 
                           onCheckedChange={() => handleCheckboxChange('zp-2')}
                         />
-                        <label htmlFor="zp-2">Submit zoning permit application</label>
+                        <label htmlFor="zp-2" className="text-black">Submit zoning permit application</label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <Checkbox 
@@ -94,14 +94,14 @@ const Chapter2 = () => {
                           checked={checkedItems['zp-3']} 
                           onCheckedChange={() => handleCheckboxChange('zp-3')}
                         />
-                        <label htmlFor="zp-3">Obtain property use approval</label>
+                        <label htmlFor="zp-3" className="text-black">Obtain property use approval</label>
                       </div>
                     </div>
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="health-inspections">
-                  <AccordionTrigger>Health Inspections</AccordionTrigger>
+                  <AccordionTrigger className="text-black">Health Inspections</AccordionTrigger>
                   <AccordionContent>
                     <div className="space-y-3">
                       <div className="flex items-center space-x-2">
@@ -110,7 +110,7 @@ const Chapter2 = () => {
                           checked={checkedItems['hi-1']} 
                           onCheckedChange={() => handleCheckboxChange('hi-1')}
                         />
-                        <label htmlFor="hi-1">Schedule initial health inspection</label>
+                        <label htmlFor="hi-1" className="text-black">Schedule initial health inspection</label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <Checkbox 
@@ -118,7 +118,7 @@ const Chapter2 = () => {
                           checked={checkedItems['hi-2']} 
                           onCheckedChange={() => handleCheckboxChange('hi-2')}
                         />
-                        <label htmlFor="hi-2">Prepare facility for inspection</label>
+                        <label htmlFor="hi-2" className="text-black">Prepare facility for inspection</label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <Checkbox 
@@ -126,14 +126,14 @@ const Chapter2 = () => {
                           checked={checkedItems['hi-3']} 
                           onCheckedChange={() => handleCheckboxChange('hi-3')}
                         />
-                        <label htmlFor="hi-3">Obtain health department certification</label>
+                        <label htmlFor="hi-3" className="text-black">Obtain health department certification</label>
                       </div>
                     </div>
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="fire-safety">
-                  <AccordionTrigger>Fire Safety Approvals</AccordionTrigger>
+                  <AccordionTrigger className="text-black">Fire Safety Approvals</AccordionTrigger>
                   <AccordionContent>
                     <div className="space-y-3">
                       <div className="flex items-center space-x-2">
@@ -142,7 +142,7 @@ const Chapter2 = () => {
                           checked={checkedItems['fs-1']} 
                           onCheckedChange={() => handleCheckboxChange('fs-1')}
                         />
-                        <label htmlFor="fs-1">Install fire safety equipment</label>
+                        <label htmlFor="fs-1" className="text-black">Install fire safety equipment</label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <Checkbox 
@@ -150,7 +150,7 @@ const Chapter2 = () => {
                           checked={checkedItems['fs-2']} 
                           onCheckedChange={() => handleCheckboxChange('fs-2')}
                         />
-                        <label htmlFor="fs-2">Schedule fire marshal inspection</label>
+                        <label htmlFor="fs-2" className="text-black">Schedule fire marshal inspection</label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <Checkbox 
@@ -158,14 +158,14 @@ const Chapter2 = () => {
                           checked={checkedItems['fs-3']} 
                           onCheckedChange={() => handleCheckboxChange('fs-3')}
                         />
-                        <label htmlFor="fs-3">Obtain fire safety certification</label>
+                        <label htmlFor="fs-3" className="text-black">Obtain fire safety certification</label>
                       </div>
                     </div>
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="state-certifications">
-                  <AccordionTrigger>State-Specific Certifications</AccordionTrigger>
+                  <AccordionTrigger className="text-black">State-Specific Certifications</AccordionTrigger>
                   <AccordionContent>
                     <div className="space-y-3">
                       <div className="flex items-center space-x-2">
@@ -174,7 +174,7 @@ const Chapter2 = () => {
                           checked={checkedItems['sc-1']} 
                           onCheckedChange={() => handleCheckboxChange('sc-1')}
                         />
-                        <label htmlFor="sc-1">Research state requirements</label>
+                        <label htmlFor="sc-1" className="text-black">Research state requirements</label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <Checkbox 
@@ -182,7 +182,7 @@ const Chapter2 = () => {
                           checked={checkedItems['sc-2']} 
                           onCheckedChange={() => handleCheckboxChange('sc-2')}
                         />
-                        <label htmlFor="sc-2">Complete certification applications</label>
+                        <label htmlFor="sc-2" className="text-black">Complete certification applications</label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <Checkbox 
@@ -190,7 +190,7 @@ const Chapter2 = () => {
                           checked={checkedItems['sc-3']} 
                           onCheckedChange={() => handleCheckboxChange('sc-3')}
                         />
-                        <label htmlFor="sc-3">Submit required documentation</label>
+                        <label htmlFor="sc-3" className="text-black">Submit required documentation</label>
                       </div>
                     </div>
                   </AccordionContent>
