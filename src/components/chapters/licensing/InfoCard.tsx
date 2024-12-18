@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion } from "@/components/ui/accordion";
 import { LicensingSection } from "./LicensingSection";
+import { ListCheck } from "lucide-react";
 
 interface Task {
   id: string;
@@ -26,7 +27,10 @@ export const InfoCard = ({ title, items, checkedItems = {}, onCheckboxChange = (
   return (
     <Card className="bg-white [&_*]:text-black">
       <CardHeader>
-        <CardTitle className="text-xl font-semibold">{title}</CardTitle>
+        <CardTitle className="text-xl font-semibold flex items-center gap-2">
+          <ListCheck className="h-5 w-5" />
+          {title}
+        </CardTitle>
       </CardHeader>
       <CardContent>
         {isZoningResearch ? (

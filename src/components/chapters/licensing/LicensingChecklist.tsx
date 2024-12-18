@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion } from "@/components/ui/accordion";
 import { LicensingSection } from "./LicensingSection";
 import { licensingSections } from "@/data/licensingData";
+import { ListChecks } from "lucide-react";
 
 interface LicensingChecklistProps {
   checkedItems: { [key: string]: boolean };
@@ -12,7 +13,10 @@ export const LicensingChecklist = ({ checkedItems, onCheckboxChange }: Licensing
   return (
     <Card className="bg-white [&_*]:text-black">
       <CardHeader>
-        <CardTitle className="text-xl font-semibold">Licensing Checklist</CardTitle>
+        <CardTitle className="text-xl font-semibold flex items-center gap-2">
+          <ListChecks className="h-5 w-5" />
+          Licensing Checklist
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <Accordion type="single" collapsible className="w-full">
