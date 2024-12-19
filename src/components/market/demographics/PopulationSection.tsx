@@ -2,17 +2,32 @@ import { BarChart, Building2, Bus, Hospital } from "lucide-react";
 import { ChartContainer, ChartTooltip } from "@/components/ui/chart";
 import { BarChart as RechartsBarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from "recharts";
 import { useQuery } from "@tanstack/react-query";
-import { fetchCensusData } from "@/utils/census";
+import { supabase } from "@/integrations/supabase/client";
 
 interface PopulationSectionProps {
   zipCode: string;
+}
+
+async function fetchCensusData(zipCode: string) {
+  console.log("Fetching census data for zip code:", zipCode);
+  const { data, error } = await supabase.functions.invoke('fetch-census-data', {
+    body: { zipCode }
+  });
+
+  if (error) {
+    console.error("Error fetching census data:", error);
+    throw error;
+  }
+
+  console.log("Census data response:", data);
+  return data;
 }
 
 const PopulationSection = ({ zipCode }: PopulationSectionProps) => {
   const { data, isLoading, error } = useQuery({
     queryKey: ['census', zipCode],
     queryFn: () => fetchCensusData(zipCode),
-    enabled: Boolean(zipCode),
+    enabled: Boolean(zipCode?.length === 5),
   });
 
   const chartData = data ? [
