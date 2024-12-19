@@ -10,11 +10,11 @@ interface ServiceMapProps {
 
 const ServiceMap = ({ zipCode }: ServiceMapProps) => {
   const mapContainer = useRef<HTMLDivElement>(null);
-  const map = useRef<mapboxgl.Map | null>(null);
-  const navigationControl = useRef<mapboxgl.NavigationControl | null>(null);
   const [token, setToken] = useState<string | null>(null);
+  const [map, setMap] = useState<mapboxgl.Map | null>(null);
+  const [navControl, setNavControl] = useState<mapboxgl.NavigationControl | null>(null);
 
-  // Separate token fetching logic
+  // Fetch token only once when component mounts
   useEffect(() => {
     const fetchToken = async () => {
       try {
@@ -41,68 +41,55 @@ const ServiceMap = ({ zipCode }: ServiceMapProps) => {
       }
     };
 
-    if (!token) {
-      fetchToken();
-    }
-  }, [token]);
+    fetchToken();
+  }, []);
 
-  // Separate map initialization and cleanup
+  // Handle map initialization and cleanup
   useEffect(() => {
-    if (!mapContainer.current || !zipCode || !token) return;
+    if (!mapContainer.current || !token || !zipCode) return;
 
-    let mounted = true;
+    console.log('Initializing map with zip code:', zipCode);
+    
+    try {
+      // Initialize map
+      mapboxgl.accessToken = token;
+      const newMap = new mapboxgl.Map({
+        container: mapContainer.current,
+        style: 'mapbox://styles/mapbox/light-v11',
+        zoom: 12,
+        center: [-118.2437, 34.0522], // Default to LA, will be updated with geocoding
+      });
 
-    const initializeMap = () => {
-      try {
-        console.log('Initializing map with zip code:', zipCode);
-        
-        mapboxgl.accessToken = token;
-        
-        const mapInstance = new mapboxgl.Map({
-          container: mapContainer.current!,
-          style: 'mapbox://styles/mapbox/light-v11',
-          zoom: 12,
-          center: [-118.2437, 34.0522], // Default to LA, will be updated with geocoding
-        });
+      // Create navigation control
+      const newNavControl = new mapboxgl.NavigationControl({
+        visualizePitch: true,
+      });
 
-        // Create navigation control
-        const navControl = new mapboxgl.NavigationControl({
-          visualizePitch: true,
-        });
+      // Add the control to the map
+      newMap.addControl(newNavControl, 'top-right');
 
-        // Add the control to the map
-        mapInstance.addControl(navControl, 'top-right');
+      // Store references
+      setMap(newMap);
+      setNavControl(newNavControl);
 
-        // Store references
-        map.current = mapInstance;
-        navigationControl.current = navControl;
-
-        console.log('Map initialization complete');
-      } catch (error) {
-        console.error('Error in map initialization:', error);
-        toast.error('Failed to load map. Please try again later.');
-      }
-    };
-
-    initializeMap();
+      console.log('Map initialization complete');
+    } catch (error) {
+      console.error('Error in map initialization:', error);
+      toast.error('Failed to load map. Please try again later.');
+    }
 
     // Cleanup function
     return () => {
-      mounted = false;
+      console.log('Starting map cleanup...');
       
-      if (map.current) {
+      if (map) {
         try {
-          console.log('Starting map cleanup...');
-          
-          // Remove the navigation control if it exists
-          if (navigationControl.current) {
-            map.current.removeControl(navigationControl.current);
-            navigationControl.current = null;
+          if (navControl) {
+            map.removeControl(navControl);
+            setNavControl(null);
           }
-
-          // Remove the map instance
-          map.current.remove();
-          map.current = null;
+          map.remove();
+          setMap(null);
         } catch (error) {
           console.error('Error during map cleanup:', error);
         }
