@@ -14,6 +14,8 @@ const ServiceMap = ({ zipCode }: ServiceMapProps) => {
   const navigationControl = useRef<mapboxgl.NavigationControl | null>(null);
 
   useEffect(() => {
+    let isMounted = true;
+
     const initializeMap = async () => {
       if (!mapContainer.current || !zipCode) return;
 
@@ -33,28 +35,33 @@ const ServiceMap = ({ zipCode }: ServiceMapProps) => {
           return;
         }
 
+        if (!isMounted) return;
+
         console.log('Successfully received Mapbox token');
         mapboxgl.accessToken = data.mapbox_token;
 
         // Only create a new map instance if one doesn't exist
         if (!map.current && mapContainer.current) {
           console.log('Initializing map with zip code:', zipCode);
-          map.current = new mapboxgl.Map({
+          
+          const mapInstance = new mapboxgl.Map({
             container: mapContainer.current,
             style: 'mapbox://styles/mapbox/light-v11',
             zoom: 12,
             center: [-118.2437, 34.0522], // Default to LA, will be updated with geocoding
           });
 
-          // Create and store the navigation control reference
-          navigationControl.current = new mapboxgl.NavigationControl({
+          // Create navigation control
+          const navControl = new mapboxgl.NavigationControl({
             visualizePitch: true,
           });
 
-          map.current.addControl(
-            navigationControl.current,
-            'top-right'
-          );
+          // Add the control to the map
+          mapInstance.addControl(navControl, 'top-right');
+
+          // Store references
+          map.current = mapInstance;
+          navigationControl.current = navControl;
 
           console.log('Map initialization complete');
         }
@@ -68,15 +75,18 @@ const ServiceMap = ({ zipCode }: ServiceMapProps) => {
 
     // Cleanup function
     return () => {
+      isMounted = false;
       try {
         if (map.current) {
           console.log('Cleaning up map instance');
+          
           // Remove the navigation control if it exists
           if (navigationControl.current) {
             map.current.removeControl(navigationControl.current);
             navigationControl.current = null;
           }
-          // Then remove the map
+
+          // Remove the map instance
           map.current.remove();
           map.current = null;
         }
