@@ -38,8 +38,8 @@ const PopulationSection = ({ zipCode }: PopulationSectionProps) => {
                 config={{
                   line: {
                     theme: {
-                      light: "rgba(59, 130, 246, 0.5)",
-                      dark: "rgba(59, 130, 246, 0.2)",
+                      light: "rgba(14, 165, 233, 0.5)", // Ocean Blue with opacity
+                      dark: "rgba(14, 165, 233, 0.2)", // Ocean Blue with lower opacity
                     },
                   },
                 }}
@@ -49,18 +49,17 @@ const PopulationSection = ({ zipCode }: PopulationSectionProps) => {
                   <XAxis dataKey="name" />
                   <YAxis />
                   <ChartTooltip />
-                  <Bar dataKey="value" fill="#4F46E5" />
+                  <Bar dataKey="value" fill="#0EA5E9" /> {/* Ocean Blue */}
                 </RechartsBarChart>
               </ChartContainer>
             </div>
-            {/* This empty div creates actual space that won't collapse */}
             <div className="h-16 w-full"></div>
           </div>
 
           <div className="grid gap-4">
             {mockData.map((item, index) => (
               <div key={index} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                <item.icon className="h-5 w-5 text-indigo-600" />
+                <item.icon className="h-5 w-5 text-[#0EA5E9]" /> {/* Ocean Blue */}
                 <div className="flex-1">
                   <div className="text-sm font-medium">{item.name}</div>
                   <div className="text-sm text-gray-600">{item.value} locations nearby</div>
