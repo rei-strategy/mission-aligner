@@ -16,6 +16,10 @@ serve(async (req) => {
     const { zipCode } = await req.json()
     console.log('Fetching census data for zip code:', zipCode)
 
+    if (!zipCode) {
+      throw new Error('Zip code is required')
+    }
+
     const CENSUS_API_KEY = Deno.env.get('CENSUS_API_KEY')
     if (!CENSUS_API_KEY) {
       throw new Error('Census API key not configured')
@@ -33,8 +37,16 @@ serve(async (req) => {
     const data = await response.json()
     console.log('Census API response:', data)
 
+    if (!Array.isArray(data) || data.length < 2) {
+      throw new Error('Invalid response format from Census API')
+    }
+
     // The Census API returns population in data[1][0]
     const population = parseInt(data[1][0])
+
+    if (isNaN(population)) {
+      throw new Error('Invalid population data received')
+    }
 
     // Generate mock data for other metrics based on population
     const result = {
