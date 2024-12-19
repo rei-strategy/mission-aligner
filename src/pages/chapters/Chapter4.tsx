@@ -1,7 +1,7 @@
 import { Separator } from "@/components/ui/separator";
-import { MissionBuilder } from "@/components/MissionBuilder";
-import { ValuesChecklist } from "@/components/ValuesChecklist";
-import { AlignmentPlanner } from "@/components/AlignmentPlanner";
+import MissionBuilder from "@/components/MissionBuilder";
+import ValuesChecklist from "@/components/ValuesChecklist";
+import AlignmentPlanner from "@/components/AlignmentPlanner";
 
 const Chapter4 = () => {
   return (
