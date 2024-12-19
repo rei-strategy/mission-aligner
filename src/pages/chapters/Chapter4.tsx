@@ -1,4 +1,5 @@
 import { Separator } from "@/components/ui/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import DemographicsTemplate from "@/components/market/DemographicsTemplate";
 import CompetitorAnalysis from "@/components/market/CompetitorAnalysis";
 import ReferralNetwork from "@/components/market/ReferralNetwork";
@@ -21,11 +22,39 @@ const Chapter4 = () => {
           </p>
         </section>
 
-        <div className="space-y-8">
-          <DemographicsTemplate />
-          <CompetitorAnalysis />
-          <ReferralNetwork />
-        </div>
+        <section className="px-4">
+          <Tabs defaultValue="demographics" className="w-full">
+            <TabsList className="w-full bg-white py-4 px-2 rounded-xl mb-6 shadow-sm">
+              <TabsTrigger value="demographics" className="flex-1 px-6 py-3 text-lg text-gray-700 data-[state=active]:bg-[#161A1D] data-[state=active]:text-white">
+                Demographics Research
+              </TabsTrigger>
+              <TabsTrigger value="competitors" className="flex-1 px-6 py-3 text-lg text-gray-700 data-[state=active]:bg-[#161A1D] data-[state=active]:text-white">
+                Competitor Analysis
+              </TabsTrigger>
+              <TabsTrigger value="referrals" className="flex-1 px-6 py-3 text-lg text-gray-700 data-[state=active]:bg-[#161A1D] data-[state=active]:text-white">
+                Referral Network
+              </TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="demographics">
+              <div className="grid gap-8 md:grid-cols-1">
+                <DemographicsTemplate />
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="competitors">
+              <div className="grid gap-8 md:grid-cols-1">
+                <CompetitorAnalysis />
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="referrals">
+              <div className="grid gap-8 md:grid-cols-1">
+                <ReferralNetwork />
+              </div>
+            </TabsContent>
+          </Tabs>
+        </section>
       </div>
     </main>
   );
