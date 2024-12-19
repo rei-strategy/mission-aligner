@@ -34,25 +34,26 @@ const ServiceMap = ({ zipCode }: ServiceMapProps) => {
 
         console.log('Successfully received Mapbox token');
         mapboxgl.accessToken = data.mapbox_token;
-        
-        if (map.current) return;
 
-        console.log('Initializing map with zip code:', zipCode);
-        map.current = new mapboxgl.Map({
-          container: mapContainer.current,
-          style: 'mapbox://styles/mapbox/light-v11',
-          zoom: 12,
-          center: [-118.2437, 34.0522], // Default to LA, will be updated with geocoding
-        });
+        // Only create a new map instance if one doesn't exist
+        if (!map.current && mapContainer.current) {
+          console.log('Initializing map with zip code:', zipCode);
+          map.current = new mapboxgl.Map({
+            container: mapContainer.current,
+            style: 'mapbox://styles/mapbox/light-v11',
+            zoom: 12,
+            center: [-118.2437, 34.0522], // Default to LA, will be updated with geocoding
+          });
 
-        map.current.addControl(
-          new mapboxgl.NavigationControl({
-            visualizePitch: true,
-          }),
-          'top-right'
-        );
+          map.current.addControl(
+            new mapboxgl.NavigationControl({
+              visualizePitch: true,
+            }),
+            'top-right'
+          );
 
-        console.log('Map initialization complete');
+          console.log('Map initialization complete');
+        }
       } catch (error) {
         console.error('Error in map initialization:', error);
         toast.error('Failed to load map. Please try again later.');
@@ -61,10 +62,22 @@ const ServiceMap = ({ zipCode }: ServiceMapProps) => {
 
     initializeMap();
 
+    // Cleanup function
     return () => {
-      if (map.current) {
-        console.log('Cleaning up map instance');
-        map.current.remove();
+      try {
+        if (map.current) {
+          console.log('Cleaning up map instance');
+          // Remove controls first
+          const controls = map.current.getControls();
+          controls.forEach(control => {
+            map.current?.removeControl(control);
+          });
+          // Then remove the map
+          map.current.remove();
+          map.current = null;
+        }
+      } catch (error) {
+        console.error('Error during map cleanup:', error);
       }
     };
   }, [zipCode]);
