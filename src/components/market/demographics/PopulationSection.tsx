@@ -3,6 +3,7 @@ import { ChartContainer, ChartTooltip } from "@/components/ui/chart";
 import { BarChart as RechartsBarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from "recharts";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 interface PopulationSectionProps {
   zipCode: string;
@@ -10,6 +11,11 @@ interface PopulationSectionProps {
 
 async function fetchCensusData(zipCode: string) {
   console.log("Fetching census data for zip code:", zipCode);
+  
+  if (!zipCode || zipCode.length !== 5) {
+    throw new Error("Invalid zip code");
+  }
+
   const { data, error } = await supabase.functions.invoke('fetch-census-data', {
     body: { zipCode }
   });
@@ -28,6 +34,11 @@ const PopulationSection = ({ zipCode }: PopulationSectionProps) => {
     queryKey: ['census', zipCode],
     queryFn: () => fetchCensusData(zipCode),
     enabled: Boolean(zipCode?.length === 5),
+    retry: 1,
+    onError: (error) => {
+      console.error("Error in census data query:", error);
+      toast.error("Failed to fetch demographic data. Please try again.");
+    }
   });
 
   const chartData = data ? [
