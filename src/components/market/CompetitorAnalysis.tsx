@@ -1,6 +1,7 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { ListCheck, Target, BarChart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const CompetitorAnalysis = () => {
   return (
@@ -27,13 +28,20 @@ const CompetitorAnalysis = () => {
               <div className="space-y-2">
                 <h4 className="font-medium text-gray-700">Gap Analysis Tools</h4>
                 <div className="grid gap-2">
-                  <Button 
-                    variant="outline" 
-                    className="justify-start flex-1 bg-[#1A1F2C] text-white hover:bg-[#1A1F2C] hover:text-white"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    Population Need Assessment
-                  </Button>
+                  <div className="flex items-center justify-between gap-4">
+                    <Button 
+                      variant="outline" 
+                      className="justify-start flex-1 bg-[#1A1F2C] text-white hover:bg-[#1A1F2C] hover:text-white"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      Population Need Assessment
+                    </Button>
+                    <Input
+                      placeholder="zip code"
+                      className="w-32"
+                      onClick={(e) => e.stopPropagation()}
+                    />
+                  </div>
                   <Button 
                     variant="outline" 
                     className="justify-start hover:bg-transparent"
