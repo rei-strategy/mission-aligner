@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { supabase } from '@/integrations/supabase/client';
+import { toast } from 'sonner';
 
 interface ServiceMapProps {
   zipCode: string;
@@ -16,17 +17,27 @@ const ServiceMap = ({ zipCode }: ServiceMapProps) => {
       if (!mapContainer.current || !zipCode) return;
 
       try {
-        const { data: { mapbox_token }, error } = await supabase.functions.invoke('get-mapbox-token');
+        console.log('Fetching Mapbox token...');
+        const { data, error } = await supabase.functions.invoke('get-mapbox-token');
         
         if (error) {
           console.error('Error fetching Mapbox token:', error);
+          toast.error('Failed to initialize map. Please try again.');
           return;
         }
 
-        mapboxgl.accessToken = mapbox_token;
+        if (!data?.mapbox_token) {
+          console.error('No Mapbox token received');
+          toast.error('Map configuration is incomplete. Please contact support.');
+          return;
+        }
+
+        console.log('Successfully received Mapbox token');
+        mapboxgl.accessToken = data.mapbox_token;
         
         if (map.current) return;
 
+        console.log('Initializing map with zip code:', zipCode);
         map.current = new mapboxgl.Map({
           container: mapContainer.current,
           style: 'mapbox://styles/mapbox/light-v11',
@@ -40,15 +51,21 @@ const ServiceMap = ({ zipCode }: ServiceMapProps) => {
           }),
           'top-right'
         );
+
+        console.log('Map initialization complete');
       } catch (error) {
-        console.error('Error initializing map:', error);
+        console.error('Error in map initialization:', error);
+        toast.error('Failed to load map. Please try again later.');
       }
     };
 
     initializeMap();
 
     return () => {
-      map.current?.remove();
+      if (map.current) {
+        console.log('Cleaning up map instance');
+        map.current.remove();
+      }
     };
   }, [zipCode]);
 
