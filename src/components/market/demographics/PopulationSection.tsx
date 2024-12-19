@@ -32,7 +32,7 @@ const PopulationSection = ({ zipCode }: PopulationSectionProps) => {
             Showing statistics for zip code: <span className="font-semibold">{zipCode}</span>
           </div>
           
-          <div className="h-64">
+          <div className="h-64 mb-32">
             <ChartContainer
               config={{
                 line: {
@@ -53,7 +53,7 @@ const PopulationSection = ({ zipCode }: PopulationSectionProps) => {
             </ChartContainer>
           </div>
 
-          <div className="grid gap-4 mt-24">
+          <div className="grid gap-4">
             {mockData.map((item, index) => (
               <div key={index} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                 <item.icon className="h-5 w-5 text-indigo-600" />
