@@ -54,7 +54,7 @@ const PopulationSection = ({ zipCode }: PopulationSectionProps) => {
               </ChartContainer>
             </div>
             {/* This empty div creates actual space that won't collapse */}
-            <div className="h-32 w-full"></div>
+            <div className="h-16 w-full"></div>
           </div>
 
           <div className="grid gap-4">
