@@ -42,7 +42,7 @@ const GeographicSection = ({ isExpanded: propIsExpanded, onToggle, onZipCodeChan
             <div className="flex items-center justify-between gap-4">
               <Button 
                 variant="outline" 
-                className="justify-start flex-1"
+                className="justify-start flex-1 bg-[#1A1F2C] text-white hover:bg-[#1A1F2C]/90"
                 onClick={(e) => e.stopPropagation()}
               >
                 Population Density Maps
