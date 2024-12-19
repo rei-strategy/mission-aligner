@@ -32,25 +32,29 @@ const PopulationSection = ({ zipCode }: PopulationSectionProps) => {
             Showing statistics for zip code: <span className="font-semibold">{zipCode}</span>
           </div>
           
-          <div className="h-64 mb-32">
-            <ChartContainer
-              config={{
-                line: {
-                  theme: {
-                    light: "rgba(59, 130, 246, 0.5)",
-                    dark: "rgba(59, 130, 246, 0.2)",
+          <div className="relative">
+            <div className="h-64">
+              <ChartContainer
+                config={{
+                  line: {
+                    theme: {
+                      light: "rgba(59, 130, 246, 0.5)",
+                      dark: "rgba(59, 130, 246, 0.2)",
+                    },
                   },
-                },
-              }}
-            >
-              <RechartsBarChart data={mockData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <ChartTooltip />
-                <Bar dataKey="value" fill="#4F46E5" />
-              </RechartsBarChart>
-            </ChartContainer>
+                }}
+              >
+                <RechartsBarChart data={mockData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <ChartTooltip />
+                  <Bar dataKey="value" fill="#4F46E5" />
+                </RechartsBarChart>
+              </ChartContainer>
+            </div>
+            {/* This empty div creates actual space that won't collapse */}
+            <div className="h-32 w-full"></div>
           </div>
 
           <div className="grid gap-4">
