@@ -10,7 +10,6 @@ interface GeographicSectionProps {
 }
 
 const GeographicSection = ({ isExpanded: propIsExpanded, onToggle, onZipCodeChange }: GeographicSectionProps) => {
-  // Force expanded state to be true and ignore the prop
   const [localZipCode, setLocalZipCode] = useState("");
 
   const handleZipCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +18,6 @@ const GeographicSection = ({ isExpanded: propIsExpanded, onToggle, onZipCodeChan
     onZipCodeChange(newZipCode);
   };
 
-  // Always render as expanded
   return (
     <div 
       className="flex flex-col cursor-pointer hover:bg-gray-50 transition-colors rounded-lg border p-4"
@@ -42,7 +40,7 @@ const GeographicSection = ({ isExpanded: propIsExpanded, onToggle, onZipCodeChan
             <div className="flex items-center justify-between gap-4">
               <Button 
                 variant="outline" 
-                className="justify-start flex-1 bg-[#1A1F2C] text-white hover:bg-[#1A1F2C]/90"
+                className="justify-start flex-1 bg-[#1A1F2C] text-white hover:bg-[#1A1F2C] hover:text-white"
                 onClick={(e) => e.stopPropagation()}
               >
                 Population Density Maps
@@ -57,21 +55,21 @@ const GeographicSection = ({ isExpanded: propIsExpanded, onToggle, onZipCodeChan
             </div>
             <Button 
               variant="outline" 
-              className="justify-start"
+              className="justify-start hover:bg-transparent"
               onClick={(e) => e.stopPropagation()}
             >
               Treatment Center Locations
             </Button>
             <Button 
               variant="outline" 
-              className="justify-start"
+              className="justify-start hover:bg-transparent"
               onClick={(e) => e.stopPropagation()}
             >
               Public Transportation Access
             </Button>
             <Button 
               variant="outline" 
-              className="justify-start"
+              className="justify-start hover:bg-transparent"
               onClick={(e) => e.stopPropagation()}
             >
               Healthcare Facility Distribution
