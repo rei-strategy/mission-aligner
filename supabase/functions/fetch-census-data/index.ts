@@ -13,18 +13,23 @@ serve(async (req) => {
   }
 
   try {
+    // Parse request body
     const { zipCode } = await req.json()
     console.log('Processing request for zip code:', zipCode)
 
-    if (!zipCode || typeof zipCode !== 'string') {
-      throw new Error('Valid zip code is required')
+    // Validate zip code
+    if (!zipCode || typeof zipCode !== 'string' || !/^\d{5}$/.test(zipCode)) {
+      throw new Error('Valid 5-digit zip code is required')
     }
 
+    // Get API key
     const CENSUS_API_KEY = Deno.env.get('CENSUS_API_KEY')
     if (!CENSUS_API_KEY) {
-      throw new Error('Census API key not configured')
+      console.error('Census API key not configured')
+      throw new Error('Internal server error')
     }
 
+    // Make request to Census API
     console.log('Fetching data from Census API...')
     const response = await fetch(
       `${CENSUS_API_BASE_URL}?get=B01003_001E&for=zip%20code%20tabulation%20area:${zipCode}&key=${CENSUS_API_KEY}`
@@ -32,23 +37,26 @@ serve(async (req) => {
 
     if (!response.ok) {
       console.error('Census API error:', response.status, response.statusText)
-      throw new Error(`Census API error: ${response.status} ${response.statusText}`)
+      throw new Error('Failed to fetch census data')
     }
 
     const data = await response.json()
     console.log('Census API raw response:', data)
 
     if (!Array.isArray(data) || data.length < 2) {
-      throw new Error('Invalid response format from Census API')
+      console.error('Invalid response format:', data)
+      throw new Error('Invalid response from Census API')
     }
 
     const population = parseInt(data[1][0])
     if (isNaN(population)) {
-      throw new Error('Invalid population data received')
+      console.error('Invalid population value:', data[1][0])
+      throw new Error('Invalid population data')
     }
 
-    console.log('Successfully processed population data:', population)
+    console.log('Successfully processed population:', population)
 
+    // Return processed data
     const result = {
       totalPopulation: population,
       treatmentCenters: Math.floor(population / 50000) + 3,
@@ -56,17 +64,27 @@ serve(async (req) => {
       healthcareFacilities: Math.floor(population / 40000) + 2
     }
 
-    return new Response(JSON.stringify(result), {
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      status: 200
-    })
+    return new Response(
+      JSON.stringify(result),
+      { 
+        headers: { 
+          ...corsHeaders, 
+          'Content-Type': 'application/json' 
+        },
+        status: 200
+      }
+    )
   } catch (error) {
     console.error('Error in fetch-census-data:', error.message)
+    
     return new Response(
       JSON.stringify({ error: error.message }),
       { 
-        status: 400,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        headers: { 
+          ...corsHeaders, 
+          'Content-Type': 'application/json' 
+        },
+        status: 400
       }
     )
   }
