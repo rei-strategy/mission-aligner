@@ -14,10 +14,10 @@ serve(async (req) => {
 
   try {
     const { zipCode } = await req.json()
-    console.log('Fetching census data for zip code:', zipCode)
+    console.log('Processing request for zip code:', zipCode)
 
-    if (!zipCode) {
-      throw new Error('Zip code is required')
+    if (!zipCode || typeof zipCode !== 'string') {
+      throw new Error('Valid zip code is required')
     }
 
     const CENSUS_API_KEY = Deno.env.get('CENSUS_API_KEY')
@@ -25,30 +25,30 @@ serve(async (req) => {
       throw new Error('Census API key not configured')
     }
 
+    console.log('Fetching data from Census API...')
     const response = await fetch(
       `${CENSUS_API_BASE_URL}?get=B01003_001E&for=zip%20code%20tabulation%20area:${zipCode}&key=${CENSUS_API_KEY}`
     )
 
     if (!response.ok) {
       console.error('Census API error:', response.status, response.statusText)
-      throw new Error('Failed to fetch census data')
+      throw new Error(`Census API error: ${response.status} ${response.statusText}`)
     }
 
     const data = await response.json()
-    console.log('Census API response:', data)
+    console.log('Census API raw response:', data)
 
     if (!Array.isArray(data) || data.length < 2) {
       throw new Error('Invalid response format from Census API')
     }
 
-    // The Census API returns population in data[1][0]
     const population = parseInt(data[1][0])
-
     if (isNaN(population)) {
       throw new Error('Invalid population data received')
     }
 
-    // Generate mock data for other metrics based on population
+    console.log('Successfully processed population data:', population)
+
     const result = {
       totalPopulation: population,
       treatmentCenters: Math.floor(population / 50000) + 3,
@@ -58,12 +58,16 @@ serve(async (req) => {
 
     return new Response(JSON.stringify(result), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      status: 200
     })
   } catch (error) {
-    console.error('Error:', error.message)
-    return new Response(JSON.stringify({ error: error.message }), {
-      status: 400,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    })
+    console.error('Error in fetch-census-data:', error.message)
+    return new Response(
+      JSON.stringify({ error: error.message }),
+      { 
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      }
+    )
   }
 })
