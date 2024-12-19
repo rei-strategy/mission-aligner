@@ -11,6 +11,7 @@ interface ServiceMapProps {
 const ServiceMap = ({ zipCode }: ServiceMapProps) => {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
+  const navigationControl = useRef<mapboxgl.NavigationControl | null>(null);
 
   useEffect(() => {
     const initializeMap = async () => {
@@ -45,10 +46,13 @@ const ServiceMap = ({ zipCode }: ServiceMapProps) => {
             center: [-118.2437, 34.0522], // Default to LA, will be updated with geocoding
           });
 
+          // Create and store the navigation control reference
+          navigationControl.current = new mapboxgl.NavigationControl({
+            visualizePitch: true,
+          });
+
           map.current.addControl(
-            new mapboxgl.NavigationControl({
-              visualizePitch: true,
-            }),
+            navigationControl.current,
             'top-right'
           );
 
@@ -67,11 +71,11 @@ const ServiceMap = ({ zipCode }: ServiceMapProps) => {
       try {
         if (map.current) {
           console.log('Cleaning up map instance');
-          // Remove controls first
-          const controls = map.current.getControls();
-          controls.forEach(control => {
-            map.current?.removeControl(control);
-          });
+          // Remove the navigation control if it exists
+          if (navigationControl.current) {
+            map.current.removeControl(navigationControl.current);
+            navigationControl.current = null;
+          }
           // Then remove the map
           map.current.remove();
           map.current = null;
