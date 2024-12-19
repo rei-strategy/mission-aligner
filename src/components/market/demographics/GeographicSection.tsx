@@ -1,13 +1,23 @@
 import { MapPin, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useState } from "react";
 
 interface GeographicSectionProps {
   isExpanded: boolean;
   onToggle: () => void;
+  onZipCodeChange: (zipCode: string) => void;
 }
 
-const GeographicSection = ({ isExpanded, onToggle }: GeographicSectionProps) => {
+const GeographicSection = ({ isExpanded, onToggle, onZipCodeChange }: GeographicSectionProps) => {
+  const [localZipCode, setLocalZipCode] = useState("");
+
+  const handleZipCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newZipCode = e.target.value;
+    setLocalZipCode(newZipCode);
+    onZipCodeChange(newZipCode);
+  };
+
   return (
     <div 
       onClick={onToggle}
@@ -28,59 +38,57 @@ const GeographicSection = ({ isExpanded, onToggle }: GeographicSectionProps) => 
         )}
       </div>
       
-      {isExpanded && <ExpandedContent />}
-    </div>
-  );
-};
-
-const ExpandedContent = () => {
-  return (
-    <div className="mt-4 space-y-4 border-t pt-4">
-      <div className="space-y-2">
-        <h4 className="font-medium text-gray-700">Area Analysis Tools</h4>
-        <div className="grid gap-2">
-          <div className="flex items-center justify-between gap-4">
-            <Button 
-              variant="outline" 
-              className="justify-start flex-1"
-              onClick={(e) => e.stopPropagation()}
-            >
-              Population Density Maps
-            </Button>
-            <Input
-              placeholder="zip code"
-              className="w-32"
-              onClick={(e) => e.stopPropagation()}
-            />
+      {isExpanded && (
+        <div className="mt-4 space-y-4 border-t pt-4">
+          <div className="space-y-2">
+            <h4 className="font-medium text-gray-700">Area Analysis Tools</h4>
+            <div className="grid gap-2">
+              <div className="flex items-center justify-between gap-4">
+                <Button 
+                  variant="outline" 
+                  className="justify-start flex-1"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  Population Density Maps
+                </Button>
+                <Input
+                  placeholder="zip code"
+                  className="w-32"
+                  value={localZipCode}
+                  onChange={handleZipCodeChange}
+                  onClick={(e) => e.stopPropagation()}
+                />
+              </div>
+              <Button 
+                variant="outline" 
+                className="justify-start"
+                onClick={(e) => e.stopPropagation()}
+              >
+                Treatment Center Locations
+              </Button>
+              <Button 
+                variant="outline" 
+                className="justify-start"
+                onClick={(e) => e.stopPropagation()}
+              >
+                Public Transportation Access
+              </Button>
+              <Button 
+                variant="outline" 
+                className="justify-start"
+                onClick={(e) => e.stopPropagation()}
+              >
+                Healthcare Facility Distribution
+              </Button>
+            </div>
           </div>
-          <Button 
-            variant="outline" 
-            className="justify-start"
-            onClick={(e) => e.stopPropagation()}
-          >
-            Treatment Center Locations
-          </Button>
-          <Button 
-            variant="outline" 
-            className="justify-start"
-            onClick={(e) => e.stopPropagation()}
-          >
-            Public Transportation Access
-          </Button>
-          <Button 
-            variant="outline" 
-            className="justify-start"
-            onClick={(e) => e.stopPropagation()}
-          >
-            Healthcare Facility Distribution
-          </Button>
+          <div className="bg-gray-50 p-4 rounded-lg">
+            <p className="text-sm text-gray-600">
+              Pro tip: Consider areas with existing healthcare infrastructure and good public transportation access for optimal service delivery.
+            </p>
+          </div>
         </div>
-      </div>
-      <div className="bg-gray-50 p-4 rounded-lg">
-        <p className="text-sm text-gray-600">
-          Pro tip: Consider areas with existing healthcare infrastructure and good public transportation access for optimal service delivery.
-        </p>
-      </div>
+      )}
     </div>
   );
 };

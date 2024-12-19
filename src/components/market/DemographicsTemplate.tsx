@@ -6,9 +6,14 @@ import PopulationSection from "./demographics/PopulationSection";
 
 const DemographicsTemplate = () => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const [zipCode, setZipCode] = useState<string>("");
 
   const toggleSection = (section: string) => {
     setExpandedSection(expandedSection === section ? null : section);
+  };
+
+  const handleZipCodeChange = (newZipCode: string) => {
+    setZipCode(newZipCode);
   };
 
   return (
@@ -24,8 +29,9 @@ const DemographicsTemplate = () => {
           <GeographicSection 
             isExpanded={expandedSection === 'geographic'}
             onToggle={() => toggleSection('geographic')}
+            onZipCodeChange={handleZipCodeChange}
           />
-          <PopulationSection />
+          <PopulationSection zipCode={zipCode} />
         </div>
       </CardContent>
     </Card>
