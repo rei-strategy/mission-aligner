@@ -35,9 +35,11 @@ const PopulationSection = ({ zipCode }: PopulationSectionProps) => {
     queryFn: () => fetchCensusData(zipCode),
     enabled: Boolean(zipCode?.length === 5),
     retry: 1,
-    onError: (error) => {
-      console.error("Error in census data query:", error);
-      toast.error("Failed to fetch demographic data. Please try again.");
+    meta: {
+      onError: () => {
+        console.error("Error in census data query:", error);
+        toast.error("Failed to fetch demographic data. Please try again.");
+      }
     }
   });
 
