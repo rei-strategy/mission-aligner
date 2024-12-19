@@ -11,7 +11,7 @@ const Chapter9 = () => {
 
         <Separator className="bg-gray-200 my-10" />
         
-        <section className="bg-white rounded-xl p-4 shadow-lg">
+        <section className="bg-white rounded-xl p-8 shadow-lg">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">Operational Guidelines</h2>
           <p className="text-gray-600 text-lg">Establishing clear policies and procedures for residents, staff, and daily operations.</p>
         </section>

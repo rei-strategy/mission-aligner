@@ -11,7 +11,7 @@ const Chapter8 = () => {
 
         <Separator className="bg-gray-200 my-10" />
         
-        <section className="bg-white rounded-xl p-4 shadow-lg">
+        <section className="bg-white rounded-xl p-8 shadow-lg">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">Team Building Essentials</h2>
           <p className="text-gray-600 text-lg">Hiring, training, and managing qualified staff to support your residents' recovery journey.</p>
         </section>
