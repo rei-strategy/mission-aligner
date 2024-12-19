@@ -2,6 +2,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Users, MapPin, BarChart, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const DemographicsTemplate = () => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
@@ -44,13 +45,20 @@ const DemographicsTemplate = () => {
                 <div className="space-y-2">
                   <h4 className="font-medium text-gray-700">Area Analysis Tools</h4>
                   <div className="grid gap-2">
-                    <Button 
-                      variant="outline" 
-                      className="justify-start"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      Population Density Maps
-                    </Button>
+                    <div className="flex items-center justify-between gap-4">
+                      <Button 
+                        variant="outline" 
+                        className="justify-start flex-1"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        Population Density Maps
+                      </Button>
+                      <Input
+                        placeholder="zip code"
+                        className="w-32"
+                        onClick={(e) => e.stopPropagation()}
+                      />
+                    </div>
                     <Button 
                       variant="outline" 
                       className="justify-start"
