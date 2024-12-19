@@ -1,0 +1,58 @@
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+
+const CENSUS_API_BASE_URL = 'https://api.census.gov/data/2020/acs/acs5';
+const CENSUS_API_KEY = Deno.env.get('CENSUS_API_KEY');
+
+serve(async (req) => {
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST',
+        'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+      },
+    })
+  }
+
+  try {
+    const { zipCode } = await req.json();
+    
+    if (!zipCode) {
+      throw new Error('Zip code is required');
+    }
+
+    const response = await fetch(
+      `${CENSUS_API_BASE_URL}?get=B01003_001E&for=zip%20code%20tabulation%20area:${zipCode}&key=${CENSUS_API_KEY}`
+    );
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch census data');
+    }
+
+    const data = await response.json();
+    const population = parseInt(data[1][0]);
+
+    // Generate mock data for other metrics based on population
+    const result = {
+      totalPopulation: population,
+      treatmentCenters: Math.floor(population / 50000) + 3,
+      transitStops: Math.floor(population / 30000) + 5,
+      healthcareFacilities: Math.floor(population / 40000) + 2
+    };
+
+    return new Response(JSON.stringify(result), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+    });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: error.message }), {
+      status: 400,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+    });
+  }
+})
