@@ -12,6 +12,7 @@ const ServiceMap = ({ zipCode }: ServiceMapProps) => {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
   const navigationControl = useRef<mapboxgl.NavigationControl | null>(null);
+  const mapboxToken = useRef<string | null>(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -20,25 +21,30 @@ const ServiceMap = ({ zipCode }: ServiceMapProps) => {
       if (!mapContainer.current || !zipCode) return;
 
       try {
-        console.log('Fetching Mapbox token...');
-        const { data, error } = await supabase.functions.invoke('get-mapbox-token');
-        
-        if (error) {
-          console.error('Error fetching Mapbox token:', error);
-          toast.error('Failed to initialize map. Please try again.');
-          return;
-        }
+        // Only fetch token if we don't have it yet
+        if (!mapboxToken.current) {
+          console.log('Fetching Mapbox token...');
+          const { data, error } = await supabase.functions.invoke('get-mapbox-token');
+          
+          if (error) {
+            console.error('Error fetching Mapbox token:', error);
+            toast.error('Failed to initialize map. Please try again.');
+            return;
+          }
 
-        if (!data?.mapbox_token) {
-          console.error('No Mapbox token received');
-          toast.error('Map configuration is incomplete. Please contact support.');
-          return;
+          if (!data?.mapbox_token) {
+            console.error('No Mapbox token received');
+            toast.error('Map configuration is incomplete. Please contact support.');
+            return;
+          }
+
+          mapboxToken.current = data.mapbox_token;
         }
 
         if (!isMounted) return;
 
-        console.log('Successfully received Mapbox token');
-        mapboxgl.accessToken = data.mapbox_token;
+        console.log('Using Mapbox token');
+        mapboxgl.accessToken = mapboxToken.current;
 
         // Only create a new map instance if one doesn't exist
         if (!map.current && mapContainer.current) {
@@ -76,9 +82,9 @@ const ServiceMap = ({ zipCode }: ServiceMapProps) => {
     // Cleanup function
     return () => {
       isMounted = false;
-      try {
-        if (map.current) {
-          console.log('Cleaning up map instance');
+      if (map.current) {
+        try {
+          console.log('Starting map cleanup...');
           
           // Remove the navigation control if it exists
           if (navigationControl.current) {
@@ -89,9 +95,9 @@ const ServiceMap = ({ zipCode }: ServiceMapProps) => {
           // Remove the map instance
           map.current.remove();
           map.current = null;
+        } catch (error) {
+          console.error('Error during map cleanup:', error);
         }
-      } catch (error) {
-        console.error('Error during map cleanup:', error);
       }
     };
   }, [zipCode]);
