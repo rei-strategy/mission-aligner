@@ -1,6 +1,6 @@
 import { Home, BookOpen, Users, Building2, Scale, Coins, Shield, HeartHandshake, FileSpreadsheet, BadgeCheck, Presentation, Settings } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   Sidebar,
   SidebarContent,
@@ -23,21 +23,33 @@ const chapters = [
   { id: 12, title: "Ensuring Long-Term Success", icon: Shield, description: "Sustainability strategies" }
 ];
 
-const ChapterCard = ({ chapter, onClick }: { chapter: typeof chapters[0]; onClick: () => void }) => {
+const ChapterCard = ({ chapter, isActive, onClick }: { chapter: typeof chapters[0]; isActive: boolean; onClick: () => void }) => {
   const Icon = chapter.icon;
   
   return (
     <Card 
-      className="bg-black-600 hover:bg-black-500 cursor-pointer transition-colors group border-black-500"
+      className={`${
+        isActive 
+          ? "bg-blue-900/50 border-blue-500" 
+          : "bg-black-600 hover:bg-black-500 border-black-500"
+      } cursor-pointer transition-colors group`}
       onClick={onClick}
     >
       <CardContent className="p-4 flex items-start space-x-4">
-        <div className="bg-blue-600/10 p-2 rounded-lg group-hover:bg-blue-600/20 transition-colors">
-          <Icon className="h-5 w-5 text-blue-300" />
+        <div className={`${
+          isActive 
+            ? "bg-blue-500/20" 
+            : "bg-blue-600/10 group-hover:bg-blue-600/20"
+          } p-2 rounded-lg transition-colors`}>
+          <Icon className={`h-5 w-5 ${isActive ? "text-blue-400" : "text-blue-300"}`} />
         </div>
         <div className="space-y-1">
-          <h3 className="font-medium leading-none text-gray-100">Chapter {chapter.id}</h3>
-          <p className="text-sm text-gray-400">{chapter.title}</p>
+          <h3 className={`font-medium leading-none ${isActive ? "text-blue-100" : "text-gray-100"}`}>
+            Chapter {chapter.id}
+          </h3>
+          <p className={`text-sm ${isActive ? "text-blue-200" : "text-gray-400"}`}>
+            {chapter.title}
+          </p>
         </div>
       </CardContent>
     </Card>
@@ -46,6 +58,8 @@ const ChapterCard = ({ chapter, onClick }: { chapter: typeof chapters[0]; onClic
 
 export function AppSidebar() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const currentChapterId = parseInt(location.pathname.split('/').pop() || '0');
 
   const handleChapterClick = (chapterId: number) => {
     navigate(`/chapter/${chapterId}`);
@@ -63,6 +77,7 @@ export function AppSidebar() {
             <ChapterCard 
               key={chapter.id} 
               chapter={chapter} 
+              isActive={chapter.id === currentChapterId}
               onClick={() => handleChapterClick(chapter.id)}
             />
           ))}
