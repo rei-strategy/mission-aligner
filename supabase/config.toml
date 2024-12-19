@@ -15,3 +15,6 @@ port = 54323
 [functions]
 [functions.fetch-census-data]
 verify_jwt = false
+
+[functions.get-mapbox-token]
+verify_jwt = false
