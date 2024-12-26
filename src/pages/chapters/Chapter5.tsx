@@ -1,6 +1,7 @@
 import { Separator } from "@/components/ui/separator";
 import { useState } from "react";
 import { PropertyGrid } from "@/components/chapters/property/PropertyGrid";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Chapter5 = () => {
   const [checkedItems, setCheckedItems] = useState<{ [key: string]: boolean }>({});
@@ -21,16 +22,27 @@ const Chapter5 = () => {
         </header>
 
         <Separator className="bg-gray-200 my-10" />
-        
-        <section className="bg-white rounded-xl p-8 shadow-lg">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Property Selection Guide</h2>
-          <p className="text-gray-600 text-lg">Key considerations for choosing a property that meets zoning requirements and resident needs.</p>
-        </section>
 
-        <PropertyGrid 
-          checkedItems={checkedItems}
-          onCheckboxChange={handleCheckboxChange}
-        />
+        <Tabs defaultValue="overview" className="w-full">
+          <TabsList className="w-full justify-start bg-white mb-6">
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="checklist">Property Checklist</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="overview">
+            <section className="bg-white rounded-xl p-8 shadow-lg">
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Property Selection Guide</h2>
+              <p className="text-gray-600 text-lg">Key considerations for choosing a property that meets zoning requirements and resident needs.</p>
+            </section>
+          </TabsContent>
+
+          <TabsContent value="checklist">
+            <PropertyGrid 
+              checkedItems={checkedItems}
+              onCheckboxChange={handleCheckboxChange}
+            />
+          </TabsContent>
+        </Tabs>
       </div>
     </main>
   );
