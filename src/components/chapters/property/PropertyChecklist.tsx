@@ -45,16 +45,14 @@ const PropertyChecklist = ({ title, items: initialItems }: PropertyChecklistProp
             <Checkbox
               id={item.id}
               checked={item.checked}
-              onCheckedChange={(e) => {
-                e?.stopPropagation();
-                handleToggle(item.id);
-              }}
+              onCheckedChange={() => handleToggle(item.id)}
               className="h-5 w-5"
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
             />
             <Label 
               htmlFor={item.id} 
               className="text-base cursor-pointer flex-grow text-white"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
             >
               {item.label}
             </Label>
