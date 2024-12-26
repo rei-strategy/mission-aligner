@@ -45,9 +45,7 @@ export const PropertyGrid = () => {
             items={costItems}
           />
         </div>
-        <div className="mt-8">
-          <CostBenefitCalculator />
-        </div>
+        <CostBenefitCalculator />
       </TabsContent>
       
       <TabsContent value="checklist">
