@@ -1,5 +1,6 @@
 import React from 'react';
 import PropertyChecklist from './PropertyChecklist';
+import { CostBenefitCalculator } from './CostBenefitCalculator';
 
 export const PropertyGrid = () => {
   const suitabilityItems = [
@@ -27,19 +28,22 @@ export const PropertyGrid = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <PropertyChecklist 
-        title="Property Suitability Checklist" 
-        items={suitabilityItems}
-      />
-      <PropertyChecklist 
-        title="Zoning and Compliance Guide" 
-        items={zoningItems}
-      />
-      <PropertyChecklist 
-        title="Cost-Benefit Analysis" 
-        items={costItems}
-      />
+    <div className="space-y-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <PropertyChecklist 
+          title="Property Suitability Checklist" 
+          items={suitabilityItems}
+        />
+        <PropertyChecklist 
+          title="Zoning and Compliance Guide" 
+          items={zoningItems}
+        />
+        <PropertyChecklist 
+          title="Cost-Benefit Analysis" 
+          items={costItems}
+        />
+      </div>
+      <CostBenefitCalculator />
     </div>
   );
 };
