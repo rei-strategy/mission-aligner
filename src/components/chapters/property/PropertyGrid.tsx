@@ -1,7 +1,7 @@
 import React from 'react';
 import PropertyChecklist from './PropertyChecklist';
 import { CostBenefitCalculator } from './CostBenefitCalculator';
-import { TabsContent } from "@/components/ui/tabs";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 
 export const PropertyGrid = () => {
   const suitabilityItems = [
@@ -29,8 +29,8 @@ export const PropertyGrid = () => {
   ];
 
   return (
-    <>
-      <TabsContent value="overview">
+    <div className="space-y-8">
+      <TabsContent value="overview" className="space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <PropertyChecklist 
             title="Property Suitability Checklist" 
@@ -45,7 +45,9 @@ export const PropertyGrid = () => {
             items={costItems}
           />
         </div>
-        <CostBenefitCalculator />
+        <div className="w-full">
+          <CostBenefitCalculator />
+        </div>
       </TabsContent>
       
       <TabsContent value="checklist">
@@ -64,6 +66,6 @@ export const PropertyGrid = () => {
           />
         </div>
       </TabsContent>
-    </>
+    </div>
   );
 };
