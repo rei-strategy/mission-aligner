@@ -1,7 +1,7 @@
 import React from 'react';
 import PropertyChecklist from './PropertyChecklist';
 
-const PropertyGrid = () => {
+export const PropertyGrid = () => {
   const suitabilityItems = [
     { id: "location", label: "Suitable Location and Accessibility", checked: false },
     { id: "size", label: "Adequate Size and Layout", checked: false },
@@ -50,5 +50,3 @@ const PropertyGrid = () => {
     </div>
   );
 };
-
-export default PropertyGrid;
