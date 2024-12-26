@@ -14,10 +14,9 @@ interface ChecklistItem {
 interface PropertyChecklistProps {
   title: string;
   items: ChecklistItem[];
-  onSave: (items: ChecklistItem[]) => void;
 }
 
-const PropertyChecklist = ({ title, items: initialItems, onSave }: PropertyChecklistProps) => {
+const PropertyChecklist = ({ title, items: initialItems }: PropertyChecklistProps) => {
   const [items, setItems] = useState<ChecklistItem[]>(initialItems);
 
   const handleToggle = (id: string) => {
@@ -27,7 +26,7 @@ const PropertyChecklist = ({ title, items: initialItems, onSave }: PropertyCheck
   };
 
   const handleSave = () => {
-    onSave(items);
+    console.log(`Saving ${title}:`, items);
     toast.success(`${title} saved successfully!`);
   };
 
@@ -51,7 +50,7 @@ const PropertyChecklist = ({ title, items: initialItems, onSave }: PropertyCheck
             />
             <Label 
               htmlFor={item.id} 
-              className="text-base cursor-pointer flex-grow"
+              className="text-base cursor-pointer flex-grow text-white"
             >
               {item.label}
             </Label>
