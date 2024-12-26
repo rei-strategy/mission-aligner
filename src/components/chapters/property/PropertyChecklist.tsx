@@ -31,14 +31,14 @@ const PropertyChecklist = ({ title, items: initialItems }: PropertyChecklistProp
   };
 
   return (
-    <div className="space-y-4">
-      {title && <h3 className="text-xl font-semibold mb-4">{title}</h3>}
-      <div className="space-y-3">
+    <Card className="w-full">
+      <CardContent className="space-y-6 pt-6">
+        <h3 className="text-xl font-semibold mb-4">{title}</h3>
         {items.map((item) => (
           <div 
             key={item.id} 
-            className={`flex items-center space-x-3 p-4 rounded-lg transition-all duration-200 cursor-pointer hover:bg-[#E5DEFF] ${
-              item.checked ? 'bg-[#E5DEFF]' : 'bg-[#F2FCE2]'
+            className={`flex items-center space-x-3 p-3 rounded-lg transition-colors cursor-pointer ${
+              item.checked ? 'bg-[#0A1D4D]' : 'bg-[#1E3A8A]'
             }`}
             onClick={() => handleToggle(item.id)}
           >
@@ -46,26 +46,23 @@ const PropertyChecklist = ({ title, items: initialItems }: PropertyChecklistProp
               id={item.id}
               checked={item.checked}
               onCheckedChange={() => handleToggle(item.id)}
-              className="h-5 w-5 border-2 border-[#9b87f5] data-[state=checked]:bg-[#9b87f5] data-[state=checked]:text-white"
+              className="h-5 w-5"
               onClick={(e: React.MouseEvent) => e.stopPropagation()}
             />
             <Label 
               htmlFor={item.id} 
-              className="text-base cursor-pointer flex-grow text-gray-700"
+              className="text-base cursor-pointer flex-grow text-white"
               onClick={(e: React.MouseEvent) => e.stopPropagation()}
             >
               {item.label}
             </Label>
           </div>
         ))}
-      </div>
-      <Button 
-        onClick={handleSave} 
-        className="w-full bg-[#9b87f5] hover:bg-[#9b87f5]/90 text-white text-lg py-6 mt-4"
-      >
-        Save {title}
-      </Button>
-    </div>
+        <Button onClick={handleSave} className="w-full bg-[#00BEFF] hover:bg-[#00BEFF]/90 text-black text-lg py-6">
+          Save {title}
+        </Button>
+      </CardContent>
+    </Card>
   );
 };
 
