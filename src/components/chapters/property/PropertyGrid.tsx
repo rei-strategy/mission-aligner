@@ -29,21 +29,40 @@ export const PropertyGrid = () => {
 
   return (
     <div className="space-y-8">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <PropertyChecklist 
-          title="Property Suitability Checklist" 
-          items={suitabilityItems}
-        />
-        <PropertyChecklist 
-          title="Zoning and Compliance Guide" 
-          items={zoningItems}
-        />
-        <PropertyChecklist 
-          title="Cost-Benefit Analysis" 
-          items={costItems}
-        />
-      </div>
-      <CostBenefitCalculator />
+      <TabsContent value="overview">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <PropertyChecklist 
+            title="Property Suitability Checklist" 
+            items={suitabilityItems}
+          />
+          <PropertyChecklist 
+            title="Zoning and Compliance Guide" 
+            items={zoningItems}
+          />
+          <PropertyChecklist 
+            title="Cost-Benefit Analysis" 
+            items={costItems}
+          />
+        </div>
+        <CostBenefitCalculator />
+      </TabsContent>
+      
+      <TabsContent value="checklist">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <PropertyChecklist 
+            title="Property Suitability Checklist" 
+            items={suitabilityItems}
+          />
+          <PropertyChecklist 
+            title="Zoning and Compliance Guide" 
+            items={zoningItems}
+          />
+          <PropertyChecklist 
+            title="Cost-Benefit Analysis" 
+            items={costItems}
+          />
+        </div>
+      </TabsContent>
     </div>
   );
 };
