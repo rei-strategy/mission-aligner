@@ -2,6 +2,7 @@ import { Separator } from "@/components/ui/separator";
 import { Card, CardContent } from "@/components/ui/card";
 import { ListCheck, FileText, BarChart2 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { PropertyGrid } from "@/components/chapters/property/PropertyGrid";
 
 const Chapter5 = () => {
   return (
@@ -20,20 +21,17 @@ const Chapter5 = () => {
         </section>
 
         <section className="px-4">
-          <Tabs defaultValue="property" className="w-full">
+          <Tabs defaultValue="overview" className="w-full">
             <TabsList className="w-full bg-white py-4 px-2 rounded-xl mb-6 shadow-sm">
-              <TabsTrigger value="property" className="flex-1 px-6 py-3 text-lg text-gray-700 data-[state=active]:bg-[#161A1D] data-[state=active]:text-white">
-                Property Analysis
+              <TabsTrigger value="overview" className="flex-1 px-6 py-3 text-lg text-gray-700">
+                Overview
               </TabsTrigger>
-              <TabsTrigger value="zoning" className="flex-1 px-6 py-3 text-lg text-gray-700 data-[state=active]:bg-[#161A1D] data-[state=active]:text-white">
-                Zoning Requirements
-              </TabsTrigger>
-              <TabsTrigger value="costs" className="flex-1 px-6 py-3 text-lg text-gray-700 data-[state=active]:bg-[#161A1D] data-[state=active]:text-white">
-                Cost Analysis
+              <TabsTrigger value="checklist" className="flex-1 px-6 py-3 text-lg text-gray-700">
+                Property Checklist
               </TabsTrigger>
             </TabsList>
             
-            <TabsContent value="property">
+            <TabsContent value="overview">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <Card className="bg-[#13171A] [&_*]:text-white">
                   <CardContent className="p-6">
@@ -79,18 +77,8 @@ const Chapter5 = () => {
               </div>
             </TabsContent>
             
-            <TabsContent value="zoning">
-              <div className="bg-white rounded-xl p-8 shadow-lg">
-                <h3 className="text-2xl font-semibold text-gray-800 mb-4">Zoning Requirements</h3>
-                <p className="text-gray-600">Detailed information about local zoning laws and requirements for sober living homes.</p>
-              </div>
-            </TabsContent>
-            
-            <TabsContent value="costs">
-              <div className="bg-white rounded-xl p-8 shadow-lg">
-                <h3 className="text-2xl font-semibold text-gray-800 mb-4">Cost Analysis</h3>
-                <p className="text-gray-600">Comprehensive breakdown of property costs, renovations, and ongoing maintenance.</p>
-              </div>
+            <TabsContent value="checklist">
+              <PropertyGrid />
             </TabsContent>
           </Tabs>
         </section>
