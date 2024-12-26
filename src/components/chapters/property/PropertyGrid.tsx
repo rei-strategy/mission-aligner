@@ -1,6 +1,7 @@
 import React from 'react';
 import PropertyChecklist from './PropertyChecklist';
 import { CostBenefitCalculator } from './CostBenefitCalculator';
+import { TabsContent } from "@/components/ui/tabs";
 
 export const PropertyGrid = () => {
   const suitabilityItems = [
