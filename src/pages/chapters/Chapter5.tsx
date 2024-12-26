@@ -1,7 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent } from "@/components/ui/card";
 import { ListCheck, FileText, BarChart2 } from "lucide-react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PropertyGrid } from "@/components/chapters/property/PropertyGrid";
 
 const Chapter5 = () => {
@@ -21,17 +20,7 @@ const Chapter5 = () => {
         </section>
 
         <section className="px-4">
-          <Tabs defaultValue="overview" className="w-full">
-            <TabsList className="w-full bg-white py-4 px-2 rounded-xl mb-6 shadow-sm">
-              <TabsTrigger value="overview" className="flex-1 px-6 py-3 text-lg text-gray-700">
-                Overview
-              </TabsTrigger>
-              <TabsTrigger value="checklist" className="flex-1 px-6 py-3 text-lg text-gray-700">
-                Property Checklist
-              </TabsTrigger>
-            </TabsList>
-            <PropertyGrid />
-          </Tabs>
+          <PropertyGrid />
         </section>
       </div>
     </main>

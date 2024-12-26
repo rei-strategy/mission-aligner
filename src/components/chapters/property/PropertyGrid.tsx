@@ -1,7 +1,6 @@
 import React from 'react';
 import PropertyChecklist from './PropertyChecklist';
 import { CostBenefitCalculator } from './CostBenefitCalculator';
-import { Tabs, TabsContent } from "@/components/ui/tabs";
 
 export const PropertyGrid = () => {
   const suitabilityItems = [
@@ -30,42 +29,23 @@ export const PropertyGrid = () => {
 
   return (
     <div className="space-y-8">
-      <TabsContent value="overview" className="space-y-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <PropertyChecklist 
-            title="Property Suitability Checklist" 
-            items={suitabilityItems}
-          />
-          <PropertyChecklist 
-            title="Zoning and Compliance Guide" 
-            items={zoningItems}
-          />
-          <PropertyChecklist 
-            title="Cost-Benefit Analysis" 
-            items={costItems}
-          />
-        </div>
-        <div className="w-full">
-          <CostBenefitCalculator />
-        </div>
-      </TabsContent>
-      
-      <TabsContent value="checklist">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <PropertyChecklist 
-            title="Property Suitability Checklist" 
-            items={suitabilityItems}
-          />
-          <PropertyChecklist 
-            title="Zoning and Compliance Guide" 
-            items={zoningItems}
-          />
-          <PropertyChecklist 
-            title="Cost-Benefit Analysis" 
-            items={costItems}
-          />
-        </div>
-      </TabsContent>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <PropertyChecklist 
+          title="Property Suitability Checklist" 
+          items={suitabilityItems}
+        />
+        <PropertyChecklist 
+          title="Zoning and Compliance Guide" 
+          items={zoningItems}
+        />
+        <PropertyChecklist 
+          title="Cost-Benefit Analysis" 
+          items={costItems}
+        />
+      </div>
+      <div className="w-full">
+        <CostBenefitCalculator />
+      </div>
     </div>
   );
 };
