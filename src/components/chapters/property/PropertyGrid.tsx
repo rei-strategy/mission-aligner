@@ -29,7 +29,7 @@ export const PropertyGrid = () => {
   ];
 
   return (
-    <div className="space-y-8">
+    <>
       <TabsContent value="overview">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <PropertyChecklist 
@@ -45,9 +45,7 @@ export const PropertyGrid = () => {
             items={costItems}
           />
         </div>
-        <div className="mt-8">
-          <CostBenefitCalculator />
-        </div>
+        <CostBenefitCalculator />
       </TabsContent>
       
       <TabsContent value="checklist">
@@ -66,6 +64,6 @@ export const PropertyGrid = () => {
           />
         </div>
       </TabsContent>
-    </div>
+    </>
   );
 };
