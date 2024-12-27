@@ -14,6 +14,11 @@ const Chapter11 = () => {
 
         <Separator className="bg-gray-200 my-10" />
         
+        <section className="bg-white rounded-xl p-4 shadow-lg">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Operations Management Guide</h2>
+          <p className="text-gray-600 text-lg">Essential guidelines for maintaining efficient daily operations and resident support.</p>
+        </section>
+
         <section className="px-4">
           <Tabs defaultValue="schedule" className="w-full">
             <TabsList className="w-full bg-white py-4 px-2 rounded-xl mb-6 shadow-sm">
