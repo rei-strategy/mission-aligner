@@ -22,27 +22,27 @@ const Chapter9 = () => {
         <section className="px-4">
           <Tabs defaultValue="rules" className="w-full">
             <TabsList className="w-full bg-white py-4 px-2 rounded-xl mb-6 shadow-sm">
-              <TabsTrigger value="rules" className="flex-1 px-6 py-3 text-lg text-gray-700">
+              <TabsTrigger value="rules" className="flex-1 px-6 py-3 text-lg text-gray-700 data-[state=active]:bg-[#161A1D] data-[state=active]:text-white">
                 House Rules
               </TabsTrigger>
-              <TabsTrigger value="substance" className="flex-1 px-6 py-3 text-lg text-gray-700">
+              <TabsTrigger value="substance" className="flex-1 px-6 py-3 text-lg text-gray-700 data-[state=active]:bg-[#161A1D] data-[state=active]:text-white">
                 Substance Policy
               </TabsTrigger>
-              <TabsTrigger value="incident" className="flex-1 px-6 py-3 text-lg text-gray-700">
+              <TabsTrigger value="incident" className="flex-1 px-6 py-3 text-lg text-gray-700 data-[state=active]:bg-[#161A1D] data-[state=active]:text-white">
                 Incident Response
               </TabsTrigger>
             </TabsList>
 
             <TabsContent value="rules">
-              <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow">
+              <Card className="bg-[#161A1D] text-white shadow-lg hover:shadow-xl transition-shadow">
                 <CardHeader>
-                  <div className="bg-blue-600/10 p-2 rounded-lg mb-4">
-                    <FileText className="h-5 w-5 text-blue-300" />
+                  <div className="bg-white/10 p-2 rounded-lg mb-4 w-fit">
+                    <FileText className="h-5 w-5 text-white" />
                   </div>
-                  <CardTitle className="text-xl font-semibold text-gray-800">House Rules Template</CardTitle>
+                  <CardTitle className="text-xl font-semibold">House Rules Template</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
+                  <p className="text-gray-300">
                     Establish clear, consistent house rules that promote accountability and community
                   </p>
                 </CardContent>
@@ -50,15 +50,15 @@ const Chapter9 = () => {
             </TabsContent>
 
             <TabsContent value="substance">
-              <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow">
+              <Card className="bg-[#161A1D] text-white shadow-lg hover:shadow-xl transition-shadow">
                 <CardHeader>
-                  <div className="bg-blue-600/10 p-2 rounded-lg mb-4">
-                    <Shield className="h-5 w-5 text-blue-300" />
+                  <div className="bg-white/10 p-2 rounded-lg mb-4 w-fit">
+                    <Shield className="h-5 w-5 text-white" />
                   </div>
-                  <CardTitle className="text-xl font-semibold text-gray-800">Substance Use Policy</CardTitle>
+                  <CardTitle className="text-xl font-semibold">Substance Use Policy</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
+                  <p className="text-gray-300">
                     Develop fair and enforceable policies for addressing substance use or testing violations
                   </p>
                 </CardContent>
@@ -66,15 +66,15 @@ const Chapter9 = () => {
             </TabsContent>
 
             <TabsContent value="incident">
-              <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow">
+              <Card className="bg-[#161A1D] text-white shadow-lg hover:shadow-xl transition-shadow">
                 <CardHeader>
-                  <div className="bg-blue-600/10 p-2 rounded-lg mb-4">
-                    <ClipboardCheck className="h-5 w-5 text-blue-300" />
+                  <div className="bg-white/10 p-2 rounded-lg mb-4 w-fit">
+                    <ClipboardCheck className="h-5 w-5 text-white" />
                   </div>
-                  <CardTitle className="text-xl font-semibold text-gray-800">Incident Response</CardTitle>
+                  <CardTitle className="text-xl font-semibold">Incident Response</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
+                  <p className="text-gray-300">
                     Implement protocols that ensure quick, effective responses to emergencies
                   </p>
                 </CardContent>
