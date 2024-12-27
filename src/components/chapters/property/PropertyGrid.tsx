@@ -29,6 +29,9 @@ export const PropertyGrid = () => {
 
   return (
     <div className="space-y-8">
+      <div className="w-full">
+        <CostBenefitCalculator />
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <PropertyChecklist 
           title="Property Suitability Checklist" 
@@ -42,9 +45,6 @@ export const PropertyGrid = () => {
           title="Cost-Benefit Analysis" 
           items={costItems}
         />
-      </div>
-      <div className="w-full">
-        <CostBenefitCalculator />
       </div>
     </div>
   );
