@@ -1,4 +1,5 @@
 import { Separator } from "@/components/ui/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileText, Shield, ClipboardCheck } from "lucide-react";
 
@@ -18,49 +19,69 @@ const Chapter9 = () => {
           <p className="text-gray-600 text-lg">Establishing clear policies and procedures for residents, staff, and daily operations.</p>
         </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-          <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow">
-            <CardHeader>
-              <div className="bg-blue-600/10 p-2 rounded-lg mb-4">
-                <FileText className="h-5 w-5 text-blue-300" />
-              </div>
-              <CardTitle className="text-xl font-semibold text-gray-800">House Rules Template</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600">
-                Establish clear, consistent house rules that promote accountability and community
-              </p>
-            </CardContent>
-          </Card>
+        <section className="px-4">
+          <Tabs defaultValue="rules" className="w-full">
+            <TabsList className="w-full bg-white py-4 px-2 rounded-xl mb-6 shadow-sm">
+              <TabsTrigger value="rules" className="flex-1 px-6 py-3 text-lg text-gray-700">
+                House Rules
+              </TabsTrigger>
+              <TabsTrigger value="substance" className="flex-1 px-6 py-3 text-lg text-gray-700">
+                Substance Policy
+              </TabsTrigger>
+              <TabsTrigger value="incident" className="flex-1 px-6 py-3 text-lg text-gray-700">
+                Incident Response
+              </TabsTrigger>
+            </TabsList>
 
-          <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow">
-            <CardHeader>
-              <div className="bg-blue-600/10 p-2 rounded-lg mb-4">
-                <Shield className="h-5 w-5 text-blue-300" />
-              </div>
-              <CardTitle className="text-xl font-semibold text-gray-800">Substance Use Policy</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600">
-                Develop fair and enforceable policies for addressing substance use or testing violations
-              </p>
-            </CardContent>
-          </Card>
+            <TabsContent value="rules">
+              <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <div className="bg-blue-600/10 p-2 rounded-lg mb-4">
+                    <FileText className="h-5 w-5 text-blue-300" />
+                  </div>
+                  <CardTitle className="text-xl font-semibold text-gray-800">House Rules Template</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600">
+                    Establish clear, consistent house rules that promote accountability and community
+                  </p>
+                </CardContent>
+              </Card>
+            </TabsContent>
 
-          <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow">
-            <CardHeader>
-              <div className="bg-blue-600/10 p-2 rounded-lg mb-4">
-                <ClipboardCheck className="h-5 w-5 text-blue-300" />
-              </div>
-              <CardTitle className="text-xl font-semibold text-gray-800">Incident Response</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600">
-                Implement protocols that ensure quick, effective responses to emergencies
-              </p>
-            </CardContent>
-          </Card>
-        </div>
+            <TabsContent value="substance">
+              <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <div className="bg-blue-600/10 p-2 rounded-lg mb-4">
+                    <Shield className="h-5 w-5 text-blue-300" />
+                  </div>
+                  <CardTitle className="text-xl font-semibold text-gray-800">Substance Use Policy</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600">
+                    Develop fair and enforceable policies for addressing substance use or testing violations
+                  </p>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="incident">
+              <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <div className="bg-blue-600/10 p-2 rounded-lg mb-4">
+                    <ClipboardCheck className="h-5 w-5 text-blue-300" />
+                  </div>
+                  <CardTitle className="text-xl font-semibold text-gray-800">Incident Response</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600">
+                    Implement protocols that ensure quick, effective responses to emergencies
+                  </p>
+                </CardContent>
+              </Card>
+            </TabsContent>
+          </Tabs>
+        </section>
       </div>
     </main>
   );
