@@ -36,10 +36,12 @@ const Chapter9 = () => {
             <TabsContent value="rules">
               <Card className="bg-[#161A1D] text-white shadow-lg hover:shadow-xl transition-shadow">
                 <CardHeader>
-                  <div className="bg-white/10 p-2 rounded-lg mb-4 w-fit">
-                    <FileText className="h-5 w-5 text-white" />
+                  <div className="flex items-center gap-4">
+                    <div className="bg-white/10 p-2 rounded-lg w-fit">
+                      <FileText className="h-5 w-5 text-white" />
+                    </div>
+                    <CardTitle className="text-xl font-semibold">House Rules Template</CardTitle>
                   </div>
-                  <CardTitle className="text-xl font-semibold">House Rules Template</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-300">
@@ -52,10 +54,12 @@ const Chapter9 = () => {
             <TabsContent value="substance">
               <Card className="bg-[#161A1D] text-white shadow-lg hover:shadow-xl transition-shadow">
                 <CardHeader>
-                  <div className="bg-white/10 p-2 rounded-lg mb-4 w-fit">
-                    <Shield className="h-5 w-5 text-white" />
+                  <div className="flex items-center gap-4">
+                    <div className="bg-white/10 p-2 rounded-lg w-fit">
+                      <Shield className="h-5 w-5 text-white" />
+                    </div>
+                    <CardTitle className="text-xl font-semibold">Substance Use Policy</CardTitle>
                   </div>
-                  <CardTitle className="text-xl font-semibold">Substance Use Policy</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-300">
@@ -68,10 +72,12 @@ const Chapter9 = () => {
             <TabsContent value="incident">
               <Card className="bg-[#161A1D] text-white shadow-lg hover:shadow-xl transition-shadow">
                 <CardHeader>
-                  <div className="bg-white/10 p-2 rounded-lg mb-4 w-fit">
-                    <ClipboardCheck className="h-5 w-5 text-white" />
+                  <div className="flex items-center gap-4">
+                    <div className="bg-white/10 p-2 rounded-lg w-fit">
+                      <ClipboardCheck className="h-5 w-5 text-white" />
+                    </div>
+                    <CardTitle className="text-xl font-semibold">Incident Response</CardTitle>
                   </div>
-                  <CardTitle className="text-xl font-semibold">Incident Response</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-300">
