@@ -1,111 +1,138 @@
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileCheck, ClipboardCheck, ScrollText } from "lucide-react";
+import { List, FileText, ScrollText } from "lucide-react";
+import { useState } from "react";
 
 const Chapter7 = () => {
+  const [checkedItems, setCheckedItems] = useState<{ [key: string]: boolean }>({});
+
+  const handleCheckboxChange = (id: string) => {
+    setCheckedItems(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
+
   return (
     <main className="flex-1 bg-[#E6E7E8] p-4">
       <div className="max-w-7xl mx-auto space-y-10">
         <header className="text-center mb-10 pt-6">
-          <h1 className="text-4xl font-bold text-[#1A1F2C] mb-3">
+          <h1 className="text-4xl font-bold text-gray-800 mb-3">
             Licensing, Certifications, and Inspections
           </h1>
-          <p className="text-lg text-[#8E9196]">
+          <p className="text-lg text-gray-600">
             Meeting regulatory requirements and industry standards
           </p>
         </header>
 
         <Separator className="bg-gray-200 my-10" />
 
-        <Tabs defaultValue="overview" className="w-full">
-          <TabsList className="w-full justify-start bg-white mb-4">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="requirements">Requirements</TabsTrigger>
-            <TabsTrigger value="process">Process</TabsTrigger>
-          </TabsList>
+        <section className="bg-white rounded-xl p-4 shadow-lg">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Regulatory Compliance Overview</h2>
+          <p className="text-gray-600 text-lg">Understanding the essential licenses, certifications, and inspections required for your sober living home.</p>
+        </section>
 
-          <TabsContent value="overview" className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card className="bg-white hover:shadow-lg transition-shadow duration-200">
-                <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                  <div className="p-2 rounded-lg bg-[#D3E4FD]">
-                    <FileCheck className="h-6 w-6 text-[#9b87f5]" />
-                  </div>
-                  <CardTitle className="text-xl font-semibold text-[#1A1F2C]">
-                    Licensing Guide
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-[#8E9196] leading-relaxed">
-                    Essential licenses and permits required for operating a sober living home,
-                    including state-specific requirements and local regulations.
-                  </p>
-                </CardContent>
-              </Card>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+          <Card className="bg-[#161A1D] text-white border-none hover:bg-[#1E2225] transition-colors duration-200">
+            <CardHeader className="flex flex-row items-center gap-4">
+              <div className="p-2 rounded-lg bg-[#2C3033]">
+                <List className="h-6 w-6 text-white" />
+              </div>
+              <CardTitle className="text-xl font-semibold text-white">
+                Licensing Requirements
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <button className="w-full flex items-center justify-between py-2 text-left hover:bg-[#2C3033] rounded px-2 transition-colors">
+                  <span>Business License Requirements</span>
+                  <svg className="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <button className="w-full flex items-center justify-between py-2 text-left hover:bg-[#2C3033] rounded px-2 transition-colors">
+                  <span>State-Specific Certifications</span>
+                  <svg className="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <button className="w-full flex items-center justify-between py-2 text-left hover:bg-[#2C3033] rounded px-2 transition-colors">
+                  <span>Local Permits</span>
+                  <svg className="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              </div>
+            </CardContent>
+          </Card>
 
-              <Card className="bg-white hover:shadow-lg transition-shadow duration-200">
-                <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                  <div className="p-2 rounded-lg bg-[#F2FCE2]">
-                    <ClipboardCheck className="h-6 w-6 text-[#9b87f5]" />
-                  </div>
-                  <CardTitle className="text-xl font-semibold text-[#1A1F2C]">
-                    Certifications
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-[#8E9196] leading-relaxed">
-                    Professional certifications and accreditations that enhance credibility
-                    and demonstrate commitment to quality care standards.
-                  </p>
-                </CardContent>
-              </Card>
+          <Card className="bg-[#161A1D] text-white border-none hover:bg-[#1E2225] transition-colors duration-200">
+            <CardHeader className="flex flex-row items-center gap-4">
+              <div className="p-2 rounded-lg bg-[#2C3033]">
+                <FileText className="h-6 w-6 text-white" />
+              </div>
+              <CardTitle className="text-xl font-semibold text-white">
+                Certification Process
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <button className="w-full flex items-center justify-between py-2 text-left hover:bg-[#2C3033] rounded px-2 transition-colors">
+                  <span>Application Requirements</span>
+                  <svg className="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <button className="w-full flex items-center justify-between py-2 text-left hover:bg-[#2C3033] rounded px-2 transition-colors">
+                  <span>Documentation Checklist</span>
+                  <svg className="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <button className="w-full flex items-center justify-between py-2 text-left hover:bg-[#2C3033] rounded px-2 transition-colors">
+                  <span>Review Timeline</span>
+                  <svg className="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              </div>
+            </CardContent>
+          </Card>
 
-              <Card className="bg-white hover:shadow-lg transition-shadow duration-200">
-                <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                  <div className="p-2 rounded-lg bg-[#D6BCFA]">
-                    <ScrollText className="h-6 w-6 text-[#9b87f5]" />
-                  </div>
-                  <CardTitle className="text-xl font-semibold text-[#1A1F2C]">
-                    Inspections
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-[#8E9196] leading-relaxed">
-                    Regular safety inspections, health department reviews, and compliance
-                    checks required for maintaining operational status.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </TabsContent>
-
-          <TabsContent value="requirements">
-            <Card className="bg-white p-6">
-              <CardContent className="space-y-4">
-                <h2 className="text-2xl font-semibold text-[#1A1F2C]">
-                  Licensing Requirements
-                </h2>
-                <p className="text-[#8E9196] leading-relaxed">
-                  Detailed information about licensing requirements will be displayed here.
-                </p>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="process">
-            <Card className="bg-white p-6">
-              <CardContent className="space-y-4">
-                <h2 className="text-2xl font-semibold text-[#1A1F2C]">
-                  Application Process
-                </h2>
-                <p className="text-[#8E9196] leading-relaxed">
-                  Step-by-step guide to the application process will be displayed here.
-                </p>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+          <Card className="bg-[#161A1D] text-white border-none hover:bg-[#2C3033] transition-colors duration-200">
+            <CardHeader className="flex flex-row items-center gap-4">
+              <div className="p-2 rounded-lg bg-[#2C3033]">
+                <ScrollText className="h-6 w-6 text-white" />
+              </div>
+              <CardTitle className="text-xl font-semibold text-white">
+                Inspection Guidelines
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <button className="w-full flex items-center justify-between py-2 text-left hover:bg-[#2C3033] rounded px-2 transition-colors">
+                  <span>Safety Requirements</span>
+                  <svg className="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <button className="w-full flex items-center justify-between py-2 text-left hover:bg-[#2C3033] rounded px-2 transition-colors">
+                  <span>Health Standards</span>
+                  <svg className="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <button className="w-full flex items-center justify-between py-2 text-left hover:bg-[#2C3033] rounded px-2 transition-colors">
+                  <span>Compliance Audits</span>
+                  <svg className="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </main>
   );
